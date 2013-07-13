@@ -76,9 +76,20 @@ I try to have a small example about IoP.
 
 10. After integrate all of them, I adjusted the position of each block. and I found that I can draw two more blocks: score block and speed block.
 
-===== OK, now I can demo a empty tetris interface, although there is no any block ===.
+=========================================================
+OK, now I can demo a empty tetris interface, although there is no any block ===.
 
+==========================================================
 
+11. The next step is: what will happen when a game start? 
+The player will push start key, and a block will appear on top 
+of the tetris area.
 
-   I am not 
+    Then I wrote down the first test case: 
+    when game start (player press 'start' key)
+    a shape should appear.
 
+    It help to discover some new interfaces:
+    -> GraphcisController need a new API: drawShape
+
+ 

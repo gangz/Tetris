@@ -24,7 +24,7 @@ TEST_GROUP(GameNCurses){
 };
 
 
-TEST(GameNCurses, init_game_gui){
+IGNORE_TEST(GameNCurses, init_game_gui){
 	game->init();
 	getch();
 };

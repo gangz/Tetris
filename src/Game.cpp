@@ -12,3 +12,8 @@ void Game::init(){
 	graphcisController->writeScore(0);
 	graphcisController->writeSpeed(0);
 }
+
+void Game::start(){
+	Shape shape;
+	graphcisController->drawShape(shape);
+}

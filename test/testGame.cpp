@@ -1,38 +1,23 @@
 #include "CppUTest/TestHarness.h"
 #include "CppUTestExt/MockSupport.h"
 #include "IGraphcisController.h"
+#include "MockGraphcisController.h"
 #include "Game.h"
 TEST_GROUP(Game){
+	Game *game;
+	IGraphcisController* draw;
 	void setup(){
+		draw = new MockGraphcisController();
+		game = new Game(draw);
 	}
-		void teardown(){
-			mock().clear();
+	void teardown(){
+		mock().clear();
+		delete game;
+		delete draw;
 	}
 };
 
-class MockGraphcisController: public IGraphcisController{
-public:
-	virtual ~MockGraphcisController(){};
-	virtual void initGUI(int area_width, int area_height){
-		mock().actualCall("IGraphcisController::initGUI")
-				.onObject(this)
-				.withParameter("area_width",area_width)
-				.withParameter("area_height",area_height);
-	}
 
-	virtual void writeScore(int score){
-		mock().actualCall("IGraphcisController::writeScore")
-			  .onObject(this)
-			  .withParameter("score",score);
-
-	};
-	virtual void writeSpeed(int speed){
-		mock().actualCall("IGraphcisController::writeSpeed")
-			  .onObject(this)
-			  .withParameter("speed",speed);
-	};
-
-};
 TEST(Game, init_game_gui){
 	IGraphcisController* draw = new MockGraphcisController();
 	mock().expectOneCall("IGraphcisController::initGUI")
@@ -48,4 +33,12 @@ TEST(Game, init_game_gui){
 	g.init();
 	mock().checkExpectations();
 	delete draw;
+};
+
+TEST(Game, start_game_will_produce_first_block){
+	mock().expectOneCall("IGraphcisController::drawShape")
+			.onObject(draw)
+			.ignoreOtherParameters();
+	game->start();
+	mock().checkExpectations();
 };

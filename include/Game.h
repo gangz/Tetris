@@ -7,6 +7,7 @@ public:
 	Game(IGraphcisController* graphcisController);
 	virtual ~Game();
 	void init();
+	void start();
 private:
 	IGraphcisController* graphcisController;
 };
