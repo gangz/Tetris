@@ -22,20 +22,20 @@ public:
 				.withParameter("area_width",area_width)
 				.withParameter("area_height",area_height);
 	}
-	virtual void drawMainFrame(){
-		mock().actualCall("IGraphcisController::drawMainFrame")
-			  .onObject(this);
-	};
-	virtual void drawTetrisFrame(int width, int height){
-		mock().actualCall("IGraphcisController::drawTetrisFrame")
-			  .onObject(this)
-			  .withParameter("width",width)
-			  .withParameter("height",height);
-	};
-	virtual void drawNextShapeArea(){
-		mock().actualCall("IGraphcisController::drawNextShapeArea")
-		  .onObject(this);
-	};
+//	virtual void drawMainFrame(){
+//		mock().actualCall("IGraphcisController::drawMainFrame")
+//			  .onObject(this);
+//	};
+//	virtual void drawTetrisFrame(int width, int height){
+//		mock().actualCall("IGraphcisController::drawTetrisFrame")
+//			  .onObject(this)
+//			  .withParameter("width",width)
+//			  .withParameter("height",height);
+//	};
+//	virtual void drawNextShapeArea(){
+//		mock().actualCall("IGraphcisController::drawNextShapeArea")
+//		  .onObject(this);
+//	};
 	virtual void writeScore(int score){
 		mock().actualCall("IGraphcisController::writeScore")
 			  .onObject(this)
