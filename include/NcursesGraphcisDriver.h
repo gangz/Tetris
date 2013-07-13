@@ -8,8 +8,8 @@ public:
 	NcursesGraphcisDriver();
 	virtual ~NcursesGraphcisDriver();
 	virtual void drawBox(Point left_top, Point right_bottom);
-	virtual void drawLine(Point start, Point end);
 	virtual void writeText(Point pos, std::string text);
+	virtual void drawCell(Point pos);
 };
 
 #endif /* NCURSESGRAPHCISDRIVER_H_ */

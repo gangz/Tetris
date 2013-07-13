@@ -105,4 +105,9 @@ of the tetris area.
     Then it tell me that class Shape should not be in GraphcisController file.
     Move it to a new file now.
     OK, shape Factory was added
- 
+
+
+13. It's time to display shape in GUI
+    Graphcis driver need a new API 'drawCell' to draw the block in special shape    Add the drawCell, and updated the integrated test cases.
+
+  

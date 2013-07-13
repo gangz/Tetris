@@ -78,7 +78,8 @@ void GraphcisController::drawSpeedArea(){
 }
 
 void GraphcisController::drawShape(const Shape* const shape){
-
+	driver->drawCell(Point(TETRIS_POS_V+1,
+			      TETRIS_POS_H + TETRIS_WIDTH/2-1));
 }
 
 
