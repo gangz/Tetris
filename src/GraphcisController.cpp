@@ -21,7 +21,8 @@ const int SPEED_AREA_V = SCORE_AREA_V+SCORE_HEIGHT+3;
 const int SPEED_AREA_H = NEXT_BLOCK_AREA_H;
 const int SPEED_WIDTH = NEXT_BLOCK_WIDTH;
 const int SPEED_HEIGHT = 2;
-
+//TODO: GraphcisController can delegate it's responsibility
+//      to Tetris, Score, Speed, ... objects.
 
 GraphcisController::GraphcisController(IGraphcisDriver* driver):driver(driver) {
 }

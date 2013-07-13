@@ -116,4 +116,14 @@ of the tetris area.
     It drived a new class Cell, and make the Shape been implemented as a list
     And, now the drawCell in GUI can be beautiful. check it!
 
+15. Make GUI display a bar. succeed.
 
+16. Now the bar should can be moved down in case of a tick(); 
+    But, TO MOVE A SHAPE SEEMS STRANGE.
+    (add a value to every cell is not good. Also, transform of a shape is more complex if consider the postion information).
+    It shows a key concept:  which object manage the placement of a shape?
+    Game? Game seems is not the right object.
+    Add a new object: Placement. It is not the object move. Placement can move.
+    Add a UT for shape placement
+    Now change the Shape in Game to a placement.
+    

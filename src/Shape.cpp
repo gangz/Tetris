@@ -26,6 +26,7 @@ void Shape::add(const Cell& c){
 
 Cell Shape::getAt(int pos) const{
 	assert (size()!=0);
+	assert (pos<size());
 	int curPos = 0;
 	for(std::list<Cell>::const_iterator iter = cellList.begin();
 			iter!=cellList.end();
@@ -34,5 +35,6 @@ Cell Shape::getAt(int pos) const{
 			return *iter;
 		curPos++;
 	}
+	assert(false); //should never reach here
 	return Cell(0,0);
 }
