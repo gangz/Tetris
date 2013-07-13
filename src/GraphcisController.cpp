@@ -1,6 +1,6 @@
 #include "GraphcisController.h"
 #include "IGraphcisDriver.h"
-
+#include <stdio.h>
 GraphcisController::GraphcisController(IGraphcisDriver* driver):driver(driver) {
 }
 
@@ -15,11 +15,15 @@ void GraphcisController::initGUI(int area_width, int area_height){
 	drawSpeedArea();
 }
 void GraphcisController::writeScore(int score){
-	std::string s; s+="0";
+	char str[20];
+	sprintf(str,"%d",score);
+	std::string s(str);
 	driver->writeText(Point(11,15),s);
 }
 void GraphcisController::writeSpeed(int speed){
-	std::string s; s+="0";
+	char str[20];
+	sprintf(str,"%d",speed);
+	std::string s(str);
 	driver->writeText(Point(16,15),s);
 }
 
