@@ -13,6 +13,15 @@ TEST_GROUP(Game){
 class MockGraphcisController: public IGraphcisController{
 public:
 	virtual ~MockGraphcisController(){};
+	virtual void initGUI(int area_width, int area_height){
+//		virtual void drawMainFrame()=0;
+//		virtual void drawTetrisFrame(int width, int height)=0;
+//		virtual void drawNextShapeArea()=0;
+		mock().actualCall("IGraphcisController::initGUI")
+				.onObject(this)
+				.withParameter("area_width",area_width)
+				.withParameter("area_height",area_height);
+	}
 	virtual void drawMainFrame(){
 		mock().actualCall("IGraphcisController::drawMainFrame")
 			  .onObject(this);
