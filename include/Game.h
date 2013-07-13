@@ -9,9 +9,12 @@ public:
 	virtual ~Game();
 	void init();
 	void start();
+	void keyDown();
 private:
 	IGraphcisController* graphcisController;
 	ShapePlacement* activeShapePlacement;
+
+	void reDraw();
 };
 
 #endif /* GAME_H_ */

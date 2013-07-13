@@ -31,5 +31,11 @@ TEST(GameNCurses, init_game_gui){
 TEST(GameNCurses, start_game_will_produce_a_block){
 	game->init();
 	game->start();
+};
+
+TEST(GameNCurses, key_down_will_move_block_down){
+	game->init();
+	game->start();
+	game->keyDown();
 	getch();
 };

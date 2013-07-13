@@ -18,9 +18,18 @@ void Game::init(){
 	graphcisController->writeSpeed(0);
 }
 
+void Game::reDraw() {
+	graphcisController->drawShape(activeShapePlacement);
+}
+
 void Game::start(){
 	ShapeFactory shapeFactory;
 	Shape* activeShape = shapeFactory.make(ShapeFactory::TYPE_BAR);
 	activeShapePlacement->put(activeShape);
-	graphcisController->drawShape(activeShapePlacement);
+	reDraw();
+}
+
+void Game::keyDown(){
+	activeShapePlacement->moveDown();
+	reDraw();
 }
