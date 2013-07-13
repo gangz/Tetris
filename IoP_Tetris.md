@@ -92,4 +92,17 @@ of the tetris area.
     It help to discover some new interfaces:
     -> GraphcisController need a new API: drawShape
 
+12. Then I need a shape. 
+    It tell me that I should have a factory to produce the shape.
+    (pause the following action: to integrate immediately --
+     it is OK, but I can bear integrate later with real shape)
+    Then I want the shape to be appear in screen 
+
+    OK, add a ShapeFactory. Then it tell me that memory leak. 
+    so, I need to destory the shape after Game destory.
+    I add a pointer named activeShape;
+
+    Then it tell me that class Shape should not be in GraphcisController file.
+    Move it to a new file now.
+    OK, shape Factory was added
  

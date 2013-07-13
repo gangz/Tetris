@@ -77,7 +77,7 @@ void GraphcisController::drawSpeedArea(){
 	driver->writeText(Point(SPEED_AREA_V,SPEED_AREA_H+1),"speed");
 }
 
-void GraphcisController::drawShape(const Shape& shape){
+void GraphcisController::drawShape(const Shape* const shape){
 
 }
 

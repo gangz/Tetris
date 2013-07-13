@@ -1,10 +1,18 @@
 #include "Game.h"
 #include "IGraphcisController.h"
+#include "Shape.h"
+class ShapeFactory{
+public:
+	Shape* make(){Shape *obj = new Shape();
+	return obj;}
+};
 Game::Game(IGraphcisController* graphcisController):graphcisController(graphcisController) {
-
+	activeShape = 0;
 }
 
 Game::~Game() {
+	if (activeShape!=0)
+		delete activeShape;
 }
 
 void Game::init(){
@@ -14,6 +22,7 @@ void Game::init(){
 }
 
 void Game::start(){
-	Shape shape;
-	graphcisController->drawShape(shape);
+	ShapeFactory shapeFactory;
+	activeShape = shapeFactory.make();
+	graphcisController->drawShape(activeShape);
 }
