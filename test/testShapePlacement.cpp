@@ -24,6 +24,4 @@ TEST(ShapePlacement, place_should_add_one_if_move_down){
 		CHECK_EQUAL(i,c.y);
 	}
 	//tear down
-	delete bar;
-
 }

@@ -15,8 +15,8 @@ public:
 	virtual ~ShapePlacement();
 	void put(Shape* shape);
 	void moveDown();
-	int shapeSize();
-	Cell getAt(int pos);
+	int shapeSize() const;
+	Cell getAt(int pos) const;
 private:
 	Shape* shape;
 	int x;

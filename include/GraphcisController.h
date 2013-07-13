@@ -17,7 +17,7 @@ public:
 	virtual void initGUI(int area_width, int area_height);
 	virtual void writeScore(int score);
 	virtual void writeSpeed(int speed);
-	virtual void drawShape(const Shape* const shape);
+	virtual void drawShape(const ShapePlacement* const shape);
 private:
 	void drawMainFrame();
 	void drawTetrisFrame(int area_width, int area_height);

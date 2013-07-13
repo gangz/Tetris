@@ -2,7 +2,7 @@
 #define GAME_H_
 
 class IGraphcisController;
-class Shape;
+class ShapePlacement;
 class Game {
 public:
 	Game(IGraphcisController* graphcisController);
@@ -11,7 +11,7 @@ public:
 	void start();
 private:
 	IGraphcisController* graphcisController;
-	Shape* activeShape;
+	ShapePlacement* activeShapePlacement;
 };
 
 #endif /* GAME_H_ */

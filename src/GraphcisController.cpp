@@ -1,5 +1,6 @@
 #include "GraphcisController.h"
 #include "IGraphcisDriver.h"
+#include "ShapePlacement.h"
 #include <stdio.h>
 #include "Shape.h"
 const int TETRIS_POS_V = 1;
@@ -78,8 +79,8 @@ void GraphcisController::drawSpeedArea(){
 	driver->writeText(Point(SPEED_AREA_V,SPEED_AREA_H+1),"speed");
 }
 
-void GraphcisController::drawShape(const Shape* const shape){
-	for (int i=0;i < shape->size();i++){
+void GraphcisController::drawShape(const ShapePlacement* const shape){
+	for (int i=0;i < shape->shapeSize();i++){
 		Cell c = shape->getAt(i);
 		driver->drawCell(Point(TETRIS_POS_V+1+c.x,
 				      TETRIS_POS_H + TETRIS_WIDTH/2-1+c.y));

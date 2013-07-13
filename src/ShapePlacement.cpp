@@ -13,7 +13,8 @@ ShapePlacement::ShapePlacement(int x, int y):x(x),y(y) {
 }
 
 ShapePlacement::~ShapePlacement() {
-	// TODO Auto-generated destructor stub
+	if (shape!=0)
+		delete shape;
 }
 
 void ShapePlacement::put(Shape* shape){
@@ -24,12 +25,12 @@ void ShapePlacement::moveDown(){
 	x++;
 }
 
-int ShapePlacement::shapeSize(){
+int ShapePlacement::shapeSize() const{
 	assert(shape!=0);
 	return shape->size();
 }
 
-Cell ShapePlacement::getAt(int pos){
+Cell ShapePlacement::getAt(int pos) const{
 	Cell c = shape->getAt(pos);
 	c.x += x;
 	c.y += y;

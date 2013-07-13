@@ -125,5 +125,6 @@ of the tetris area.
     Game? Game seems is not the right object.
     Add a new object: Placement. It is not the object move. Placement can move.
     Add a UT for shape placement
-    Now change the Shape in Game to a placement.
+
+17. Now change the Shape in Game to a placement.
     

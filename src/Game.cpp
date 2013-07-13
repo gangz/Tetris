@@ -2,13 +2,14 @@
 #include "IGraphcisController.h"
 #include "Shape.h"
 #include "ShapeFactory.h"
+#include "ShapePlacement.h"
 Game::Game(IGraphcisController* graphcisController):graphcisController(graphcisController) {
-	activeShape = 0;
+	activeShapePlacement = new ShapePlacement(0,0);
 }
 
 Game::~Game() {
-	if (activeShape!=0)
-		delete activeShape;
+	if (activeShapePlacement!=0)
+		delete activeShapePlacement;
 }
 
 void Game::init(){
@@ -19,6 +20,7 @@ void Game::init(){
 
 void Game::start(){
 	ShapeFactory shapeFactory;
-	activeShape = shapeFactory.make(ShapeFactory::TYPE_BAR);
-	graphcisController->drawShape(activeShape);
+	Shape* activeShape = shapeFactory.make(ShapeFactory::TYPE_BAR);
+	activeShapePlacement->put(activeShape);
+	graphcisController->drawShape(activeShapePlacement);
 }

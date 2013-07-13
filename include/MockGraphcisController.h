@@ -23,7 +23,7 @@ public:
 			  .withParameter("speed",speed);
 	};
 
-	virtual void drawShape(const Shape* const shape){
+	virtual void drawShape(const ShapePlacement* const shape){
 		mock().actualCall("IGraphcisController::drawShape")
 				.onObject(this)
 				.withParameter("shape",(void*)shape);
