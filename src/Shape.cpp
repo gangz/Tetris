@@ -6,7 +6,7 @@
  */
 
 #include "Shape.h"
-
+#include <assert.h>
 Shape::Shape() {
 	// TODO Auto-generated constructor stub
 
@@ -16,3 +16,23 @@ Shape::~Shape() {
 	// TODO Auto-generated destructor stub
 }
 
+int Shape::size() const{
+	return cellList.size();
+}
+
+void Shape::add(const Cell& c){
+	cellList.push_back(c);
+}
+
+Cell Shape::getAt(int pos){
+	assert (size()!=0);
+	int curPos = 0;
+	for(std::list<Cell>::iterator iter = cellList.begin();
+			iter!=cellList.end();
+			iter++){
+		if (pos==curPos)
+			return *iter;
+		curPos++;
+	}
+	return Cell(0,0);
+}

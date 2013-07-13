@@ -1,11 +1,7 @@
 #include "Game.h"
 #include "IGraphcisController.h"
 #include "Shape.h"
-class ShapeFactory{
-public:
-	Shape* make(){Shape *obj = new Shape();
-	return obj;}
-};
+#include "ShapeFactory.h"
 Game::Game(IGraphcisController* graphcisController):graphcisController(graphcisController) {
 	activeShape = 0;
 }

@@ -111,3 +111,9 @@ of the tetris area.
     Graphcis driver need a new API 'drawCell' to draw the block in special shape    Add the drawCell, and updated the integrated test cases.
 
   
+14: How about to draw several real shape instead of a single cell? (to revealing the error in drawShape)
+    Firstly, create a new test: testShape.cpp
+    It drived a new class Cell, and make the Shape been implemented as a list
+    And, now the drawCell in GUI can be beautiful. check it!
+
+
