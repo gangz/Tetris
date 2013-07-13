@@ -5,8 +5,8 @@
 TEST_GROUP(Game){
 	void setup(){
 	}
-	void teardown(){
-		mock().clear();
+		void teardown(){
+			mock().clear();
 	}
 };
 
