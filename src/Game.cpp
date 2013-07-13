@@ -1,6 +1,6 @@
 #include "Game.h"
-#include "IPainter.h"
-Game::Game(IPainter* painter):painter(painter) {
+#include "IGraphcisController.h"
+Game::Game(IGraphcisController* painter):painter(painter) {
 
 }
 

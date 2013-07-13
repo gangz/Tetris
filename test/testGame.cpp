@@ -1,6 +1,6 @@
 #include "CppUTest/TestHarness.h"
 #include "CppUTestExt/MockSupport.h"
-#include "IPainter.h"
+#include "IGraphcisController.h"
 #include "Game.h"
 TEST_GROUP(Game){
 	void setup(){
@@ -10,47 +10,47 @@ TEST_GROUP(Game){
 	}
 };
 
-class MockPainter: public IPainter{
+class MockGraphcisController: public IGraphcisController{
 public:
-	virtual ~MockPainter(){};
+	virtual ~MockGraphcisController(){};
 	virtual void drawMainFrame(){
-		mock().actualCall("IPainter::drawMainFrame")
+		mock().actualCall("IGraphcisController::drawMainFrame")
 			  .onObject(this);
 	};
 	virtual void drawTetrisFrame(int width, int height){
-		mock().actualCall("IPainter::drawTetrisFrame")
+		mock().actualCall("IGraphcisController::drawTetrisFrame")
 			  .onObject(this)
 			  .withParameter("width",width)
 			  .withParameter("height",height);
 	};
 	virtual void drawNextShapeArea(){
-		mock().actualCall("IPainter::drawNextShapeArea")
+		mock().actualCall("IGraphcisController::drawNextShapeArea")
 		  .onObject(this);
 	};
 	virtual void writeScore(int score){
-		mock().actualCall("IPainter::writeScore")
+		mock().actualCall("IGraphcisController::writeScore")
 			  .onObject(this)
 			  .withParameter("score",score);
 
 	};
 	virtual void writeSpeed(int speed){
-		mock().actualCall("IPainter::writeSpeed")
+		mock().actualCall("IGraphcisController::writeSpeed")
 			  .onObject(this)
 			  .withParameter("speed",speed);
 	};
 
 };
 TEST(Game, init_game_gui){
-	IPainter* draw = new MockPainter();
-	mock().expectOneCall("IPainter::drawTetrisFrame").onObject(draw)
+	IGraphcisController* draw = new MockGraphcisController();
+	mock().expectOneCall("IGraphcisController::drawTetrisFrame").onObject(draw)
 			.withParameter("height",20)
 			.withParameter("width",8);
-	mock().expectOneCall("IPainter::drawNextShapeArea")
+	mock().expectOneCall("IGraphcisController::drawNextShapeArea")
 			.onObject(draw);
-	mock().expectOneCall("IPainter::writeScore")
+	mock().expectOneCall("IGraphcisController::writeScore")
 			.onObject(draw)
 			.withParameter("score",0);
-	mock().expectOneCall("IPainter::writeSpeed")
+	mock().expectOneCall("IGraphcisController::writeSpeed")
 			.onObject(draw)
 			.withParameter("speed",0);
 	Game g(draw);

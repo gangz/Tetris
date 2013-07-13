@@ -1,14 +1,14 @@
 #ifndef GAME_H_
 #define GAME_H_
 
-class IPainter;
+class IGraphcisController;
 class Game {
 public:
-	Game(IPainter* painter);
+	Game(IGraphcisController* painter);
 	virtual ~Game();
 	void init();
 private:
-	IPainter* painter;
+	IGraphcisController* painter;
 };
 
 #endif /* GAME_H_ */
