@@ -1,6 +1,7 @@
 #include "GraphcisController.h"
+#include "IGraphcisDriver.h"
 
-GraphcisController::GraphcisController() {
+GraphcisController::GraphcisController(IGraphcisDriver* driver):driver(driver) {
 }
 
 GraphcisController::~GraphcisController() {
@@ -19,7 +20,7 @@ void GraphcisController::writeSpeed(int speed){
 }
 
 void GraphcisController::drawMainFrame(){
-	;
+	driver->drawBox(Point(0,0),Point(40,24));
 }
 void GraphcisController::drawTetrisFrame(int area_width, int area_height){
 	;

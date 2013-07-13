@@ -9,10 +9,10 @@
 #define GRAPHCISCONTROLLER_H_
 
 #include "IGraphcisController.h"
-
+class IGraphcisDriver;
 class GraphcisController: public IGraphcisController {
 public:
-	GraphcisController();
+	GraphcisController(IGraphcisDriver* driver);
 	virtual ~GraphcisController();
 	virtual void initGUI(int area_width, int area_height);
 	virtual void writeScore(int score);
@@ -21,6 +21,7 @@ private:
 	void drawMainFrame();
 	void drawTetrisFrame(int area_width, int area_height);
 	void drawNextShapeArea();
+	IGraphcisDriver* driver;
 };
 
 #endif /* GRAPHCISCONTROLLER_H_ */
