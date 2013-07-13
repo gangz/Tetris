@@ -11,12 +11,12 @@ TEST_GROUP(NcursesDriver){
 	}
 };
 
-TEST(NcursesDriver,draw_a_box){
+IGNORE_TEST(NcursesDriver,draw_a_box){
 	driver->drawBox(Point(1,1),Point(10,10));
 	getch();
 }
 
-TEST(NcursesDriver,write_a_text){
+IGNORE_TEST(NcursesDriver,write_a_text){
 	driver->writeText(Point(2,2),"hello world");
 	getch();
 }

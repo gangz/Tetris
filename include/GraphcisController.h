@@ -21,6 +21,9 @@ private:
 	void drawMainFrame();
 	void drawTetrisFrame(int area_width, int area_height);
 	void drawNextShapeArea();
+	void drawScoreArea();
+	void drawSpeedArea();
+
 	IGraphcisDriver* driver;
 };
 
