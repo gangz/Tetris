@@ -1,6 +1,6 @@
 #include "Game.h"
 #include "IGraphcisController.h"
-Game::Game(IGraphcisController* painter):painter(painter) {
+Game::Game(IGraphcisController* graphcisController):graphcisController(graphcisController) {
 
 }
 
@@ -8,9 +8,7 @@ Game::~Game() {
 }
 
 void Game::init(){
-	//painter->drawMainFrame();
-	painter->drawTetrisFrame(8,20);
-	painter->drawNextShapeArea();
-	painter->writeScore(0);
-	painter->writeSpeed(0);
+	graphcisController->initGUI(8,20);
+	graphcisController->writeScore(0);
+	graphcisController->writeSpeed(0);
 }

@@ -51,11 +51,14 @@ public:
 };
 TEST(Game, init_game_gui){
 	IGraphcisController* draw = new MockGraphcisController();
-	mock().expectOneCall("IGraphcisController::drawTetrisFrame").onObject(draw)
-			.withParameter("height",20)
-			.withParameter("width",8);
-	mock().expectOneCall("IGraphcisController::drawNextShapeArea")
-			.onObject(draw);
+//	mock().expectOneCall("IGraphcisController::drawTetrisFrame").onObject(draw)
+//			.withParameter("height",20)
+//			.withParameter("width",8);
+//	mock().expectOneCall("IGraphcisController::drawNextShapeArea")
+//			.onObject(draw);
+	mock().expectOneCall("IGraphcisController::initGUI")
+			.onObject(draw)
+			.ignoreOtherParameters();
 	mock().expectOneCall("IGraphcisController::writeScore")
 			.onObject(draw)
 			.withParameter("score",0);

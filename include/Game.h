@@ -4,11 +4,11 @@
 class IGraphcisController;
 class Game {
 public:
-	Game(IGraphcisController* painter);
+	Game(IGraphcisController* graphcisController);
 	virtual ~Game();
 	void init();
 private:
-	IGraphcisController* painter;
+	IGraphcisController* graphcisController;
 };
 
 #endif /* GAME_H_ */
