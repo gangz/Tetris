@@ -31,4 +31,5 @@ TEST(GameNCurses, init_game_gui){
 TEST(GameNCurses, start_game_will_produce_a_block){
 	game->init();
 	game->start();
+	getch();
 };

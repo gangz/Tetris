@@ -24,10 +24,10 @@ void Shape::add(const Cell& c){
 	cellList.push_back(c);
 }
 
-Cell Shape::getAt(int pos){
+Cell Shape::getAt(int pos) const{
 	assert (size()!=0);
 	int curPos = 0;
-	for(std::list<Cell>::iterator iter = cellList.begin();
+	for(std::list<Cell>::const_iterator iter = cellList.begin();
 			iter!=cellList.end();
 			iter++){
 		if (pos==curPos)

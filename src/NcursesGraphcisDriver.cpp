@@ -7,6 +7,7 @@ NcursesGraphcisDriver::NcursesGraphcisDriver() {
 }
 
 NcursesGraphcisDriver::~NcursesGraphcisDriver() {
+	clear();
 	endwin();
 }
 

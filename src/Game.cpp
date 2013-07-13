@@ -19,6 +19,6 @@ void Game::init(){
 
 void Game::start(){
 	ShapeFactory shapeFactory;
-	activeShape = shapeFactory.make();
+	activeShape = shapeFactory.make(ShapeFactory::TYPE_BAR);
 	graphcisController->drawShape(activeShape);
 }

@@ -21,7 +21,7 @@ public:
 	virtual ~Shape();
 	int size() const;
 	void add(const Cell& c);
-	Cell getAt(int pos);
+	Cell getAt(int pos)  const;
 private:
 	std::list<Cell> cellList;
 };
