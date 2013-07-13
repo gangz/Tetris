@@ -19,20 +19,7 @@ public:
 				.withParameter("area_width",area_width)
 				.withParameter("area_height",area_height);
 	}
-//	virtual void drawMainFrame(){
-//		mock().actualCall("IGraphcisController::drawMainFrame")
-//			  .onObject(this);
-//	};
-//	virtual void drawTetrisFrame(int width, int height){
-//		mock().actualCall("IGraphcisController::drawTetrisFrame")
-//			  .onObject(this)
-//			  .withParameter("width",width)
-//			  .withParameter("height",height);
-//	};
-//	virtual void drawNextShapeArea(){
-//		mock().actualCall("IGraphcisController::drawNextShapeArea")
-//		  .onObject(this);
-//	};
+
 	virtual void writeScore(int score){
 		mock().actualCall("IGraphcisController::writeScore")
 			  .onObject(this)
@@ -48,11 +35,6 @@ public:
 };
 TEST(Game, init_game_gui){
 	IGraphcisController* draw = new MockGraphcisController();
-//	mock().expectOneCall("IGraphcisController::drawTetrisFrame").onObject(draw)
-//			.withParameter("height",20)
-//			.withParameter("width",8);
-//	mock().expectOneCall("IGraphcisController::drawNextShapeArea")
-//			.onObject(draw);
 	mock().expectOneCall("IGraphcisController::initGUI")
 			.onObject(draw)
 			.ignoreOtherParameters();
