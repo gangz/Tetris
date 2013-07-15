@@ -139,4 +139,7 @@ of the tetris area.
     Done
 19. Then the shape can be moved left or right.
 
+20. Then we try to add a key listener to accept input from player.
+
+
 

@@ -2,10 +2,12 @@
 #define GAME_H_
 
 class IGraphcisController;
+class InputController;
 class ShapePlacement;
 class Game {
 public:
-	Game(IGraphcisController* graphcisController);
+	Game(IGraphcisController* graphcisController=0,
+		 InputController* inputController=0);
 	virtual ~Game();
 	void init();
 	void start();
@@ -14,6 +16,7 @@ public:
 	void keyRight();
 private:
 	IGraphcisController* graphcisController;
+	InputController* inputController;
 	ShapePlacement* activeShapePlacement;
 
 	void reDraw();

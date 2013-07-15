@@ -3,7 +3,10 @@
 #include "Shape.h"
 #include "ShapeFactory.h"
 #include "ShapePlacement.h"
-Game::Game(IGraphcisController* graphcisController):graphcisController(graphcisController) {
+#include "IInputController.h"
+Game::Game(IGraphcisController* graphcisController,
+		InputController* inputController):graphcisController(graphcisController) ,
+		inputController(inputController){
 	activeShapePlacement = new ShapePlacement(0,0);
 }
 
