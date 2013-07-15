@@ -19,6 +19,7 @@ void Game::init(){
 }
 
 void Game::reDraw() {
+	graphcisController->cleanTetrisArea();
 	graphcisController->drawShape(activeShapePlacement);
 }
 

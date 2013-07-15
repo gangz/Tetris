@@ -39,6 +39,8 @@ TEST(Game, start_game_will_produce_first_block){
 	mock().expectOneCall("IGraphcisController::drawShape")
 			.onObject(draw)
 			.ignoreOtherParameters();
+	mock().ignoreOtherCalls();
+
 	game->start();
 	mock().checkExpectations();
 };

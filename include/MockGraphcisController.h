@@ -29,6 +29,11 @@ public:
 				.withParameter("shape",(void*)shape);
 	}
 
+	virtual void cleanTetrisArea(){
+		mock().actualCall("IGraphcisController::cleanTetrisArea")
+					  .onObject(this);
+	}
+
 };
 
 

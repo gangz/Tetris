@@ -6,6 +6,13 @@ Zhang Gang
 ##Why I write the program
 I try to have a small example about IoP.
 
+## Benefit
+Very clear thinking flow.
+No any uncessary service
+Think single thing in same time.
+What you think is what you get.
+Put the domain model in mind. Refine them quickly.
+
 ##Progress
 
 1. I start from a Game class. It is the first one I know.
@@ -127,4 +134,5 @@ of the tetris area.
     Add a UT for shape placement
 
 17. Now change the Shape in Game to a placement.
-    
+
+18. Erase the area of Tetris in GUI to make it like move.     (TODO)

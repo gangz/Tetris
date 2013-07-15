@@ -56,7 +56,6 @@ void GraphcisController::drawMainFrame(){
 }
 
 
-
 void GraphcisController::drawTetrisFrame(int area_width, int area_height){
 	driver->drawBox(Point(TETRIS_POS_V,TETRIS_POS_H),
 			Point(TETRIS_POS_V+TETRIS_HEIGHT,TETRIS_POS_H+TETRIS_WIDTH));;
@@ -85,6 +84,12 @@ void GraphcisController::drawShape(const ShapePlacement* const shape){
 		driver->drawCell(Point(TETRIS_POS_V+1+c.x,
 				      TETRIS_POS_H + TETRIS_WIDTH/2-1+c.y));
 	}
+}
+
+void GraphcisController::cleanTetrisArea(){
+	for(int c = TETRIS_POS_V+1;c<TETRIS_POS_V+1+TETRIS_HEIGHT;c++)
+		for (int r = TETRIS_POS_H+1; r<TETRIS_POS_H+1+TETRIS_WIDTH; r++)
+			driver->writeText(Point(c,r),"  ");
 }
 
 

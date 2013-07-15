@@ -18,6 +18,7 @@ public:
 	virtual void writeScore(int score);
 	virtual void writeSpeed(int speed);
 	virtual void drawShape(const ShapePlacement* const shape);
+	virtual void cleanTetrisArea();
 private:
 	void drawMainFrame();
 	void drawTetrisFrame(int area_width, int area_height);
