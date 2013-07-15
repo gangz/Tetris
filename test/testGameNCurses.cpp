@@ -70,8 +70,8 @@ TEST_GROUP(GameNCurses_MockInput){
 	}
 };
 
-#undef PAUSE
-#define PAUSE() getch()
+//#undef PAUSE
+//#define PAUSE() getch()
 TEST(GameNCurses_MockInput, key_down_will_move_block_down_gui){
 	mock().expectNCalls(10,"InputListener::getInput")
 			.onObject(input)
@@ -86,4 +86,35 @@ TEST(GameNCurses_MockInput, key_down_will_move_block_down_gui){
 	game->init();
 	game->start();
 	PAUSE();
+};
+
+
+#include "KeyboardInputListener.h"
+TEST_GROUP(GameNCurses_With_Input){
+	Game* game;
+	IGraphcisController* graphController;
+	IGraphcisDriver* graphDriver;
+	InputListener* input;
+
+	void setup(){
+		graphDriver = new NcursesGraphcisDriver();
+		graphController = new GraphcisController(graphDriver);
+		input = new KeyboardInputListener();
+		game = new Game(graphController,input);
+	}
+	void teardown(){
+		mock().clear();
+		delete game;
+		delete graphController;
+		delete graphDriver;
+		delete input;
+	}
+};
+
+#undef PAUSE
+#define PAUSE() getch()
+TEST(GameNCurses_With_Input, key_down_will_move_block_down_gui){
+	game->init();
+	game->start();
+	//PAUSE();
 };

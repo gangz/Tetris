@@ -3,6 +3,8 @@
 #include <assert.h>
 NcursesGraphcisDriver::NcursesGraphcisDriver() {
 	initscr();
+	noecho();
+	cbreak();	/* Line buffering disabled. pass on everything */
 	box(stdscr,ACS_VLINE,ACS_HLINE);
 }
 
