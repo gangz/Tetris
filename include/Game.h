@@ -10,6 +10,8 @@ public:
 	void init();
 	void start();
 	void keyDown();
+	void keyLeft();
+	void keyRight();
 private:
 	IGraphcisController* graphcisController;
 	ShapePlacement* activeShapePlacement;

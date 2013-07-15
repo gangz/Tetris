@@ -6,6 +6,10 @@
 #include "NcursesGraphcisDriver.h"
 #include "GraphcisController.h"
 #include "Game.h"
+
+#define PAUSE() (void)0
+//#define PAUSE() getch()
+
 TEST_GROUP(GameNCurses){
 	Game* game;
 	IGraphcisController* graphController;
@@ -36,6 +40,11 @@ TEST(GameNCurses, start_game_will_produce_a_block){
 TEST(GameNCurses, key_down_will_move_block_down){
 	game->init();
 	game->start();
+	PAUSE();
 	game->keyDown();
-	getch();
+	PAUSE();
+	game->keyLeft();
+	PAUSE();
+	game->keyRight();
+	PAUSE();
 };

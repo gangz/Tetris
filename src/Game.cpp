@@ -34,3 +34,15 @@ void Game::keyDown(){
 	activeShapePlacement->moveDown();
 	reDraw();
 }
+
+void Game::keyLeft(){
+	activeShapePlacement->moveLeft();
+	reDraw();
+}
+
+void Game::keyRight(){
+	activeShapePlacement->moveRight();
+	reDraw();
+}
+
+

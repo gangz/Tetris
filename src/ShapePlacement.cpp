@@ -25,6 +25,14 @@ void ShapePlacement::moveDown(){
 	x++;
 }
 
+void ShapePlacement::moveRight(){
+	y++;
+}
+
+void ShapePlacement::moveLeft(){
+	y--;
+}
+
 int ShapePlacement::shapeSize() const{
 	assert(shape!=0);
 	return shape->size();

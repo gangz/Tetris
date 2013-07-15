@@ -135,4 +135,8 @@ of the tetris area.
 
 17. Now change the Shape in Game to a placement.
 
-18. Erase the area of Tetris in GUI to make it like move.     (TODO)
+18. Erase the area of Tetris in GUI to make it like move.
+    Done
+19. Then the shape can be moved left or right.
+
+
