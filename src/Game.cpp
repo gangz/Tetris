@@ -3,16 +3,17 @@
 #include "Shape.h"
 #include "ShapeFactory.h"
 #include "ShapePlacement.h"
-#include "IInputController.h"
+#include "IInputListener.h"
 Game::Game(IGraphcisController* graphcisController,
-		InputController* inputController):graphcisController(graphcisController) ,
-		inputController(inputController){
+		InputListener* inputController):graphcisController(graphcisController) ,
+		inputListener(inputController){
 	activeShapePlacement = new ShapePlacement(0,0);
 }
 
 Game::~Game() {
 	if (activeShapePlacement!=0)
 		delete activeShapePlacement;
+	//delete graphcisController;
 }
 
 void Game::init(){
@@ -26,11 +27,33 @@ void Game::reDraw() {
 	graphcisController->drawShape(activeShapePlacement);
 }
 
-void Game::start(){
+void Game::listenInputEvents(){
+	if (inputListener!=0){
+		InputListener::Instruction instruct;
+		do {
+			instruct = inputListener->getInput();
+			switch(instruct){
+			case InputListener::MOVE_DOWN:
+				keyDown();break;
+			case InputListener::MOVE_LEFT:
+				keyLeft();break;
+			case InputListener::MOVE_RIGHT:
+				keyRight();break;
+			}
+		}
+		while(instruct!=InputListener::EXIST);
+	}
+}
+
+void Game::createShape(){
 	ShapeFactory shapeFactory;
 	Shape* activeShape = shapeFactory.make(ShapeFactory::TYPE_BAR);
 	activeShapePlacement->put(activeShape);
+}
+void Game::start(){
+	createShape();
 	reDraw();
+	listenInputEvents();
 }
 
 void Game::keyDown(){
