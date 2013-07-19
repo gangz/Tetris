@@ -17,6 +17,7 @@ public:
 	void moveDown();
 	void moveRight();
 	void moveLeft();
+	void join(const ShapePlacement& rhs);
 	int shapeSize() const;
 	Cell getAt(int pos) const;
 private:

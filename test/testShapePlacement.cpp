@@ -57,4 +57,27 @@ TEST(ShapePlacement, place_horinzal_should_sub_one_if_move_left){
 	//tear down
 }
 
+TEST_GROUP(ShapePlacement_Join){
+	ShapeFactory shapeFactory;
+	Shape* bar;
+	ShapePlacement* shapePlacement;
+	void setup(){
+		//setup
+		bar = shapeFactory.make(ShapeFactory::TYPE_BAR);
+		shapePlacement = new ShapePlacement(0,0);
+		shapePlacement->put(bar);
+	}
+	void teardown(){
+		delete shapePlacement;
+	}
+};
 
+TEST(ShapePlacement_Join,join_two_shape){
+	Shape* anotherBar = shapeFactory.make(ShapeFactory::TYPE_BAR);
+	ShapePlacement* anotherShapePlacement = new ShapePlacement(0,4);
+	anotherShapePlacement->put(anotherBar);
+	shapePlacement->join(*anotherShapePlacement);
+	CHECK_EQUAL(8,shapePlacement->shapeSize());
+	CHECK_EQUAL(4,shapePlacement->getAt(4).y);
+	delete anotherShapePlacement;
+}

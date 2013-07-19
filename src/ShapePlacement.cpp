@@ -44,3 +44,12 @@ Cell ShapePlacement::getAt(int pos) const{
 	c.y += y;
 	return c;
 }
+
+void ShapePlacement::join(const ShapePlacement& rhs) {
+	for (int i=0;i<rhs.shapeSize();i++){
+		Cell c = rhs.getAt(i);
+		Cell newCell(c.x-x,c.y-y);
+		shape->add(newCell);
+	}
+}
+
