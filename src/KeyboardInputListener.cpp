@@ -27,6 +27,10 @@ InputListener::Instruction KeyboardInputListener::getInput(){
 	case 'n':
 	case 'N':
 		return InputListener::NO;
+	case 'y':
+	case 'Y':
+		return InputListener::YES;
+
 	}
 	return InputListener::IGNORE;
 }

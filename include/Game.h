@@ -27,6 +27,10 @@ private:
 	void listenInputEvents();
 	void createShape();
 	void moveDownCollision();
+	void terminate();
+	void clean();
+	void restart();
+	bool terminateFlag;
 };
 
 #endif /* GAME_H_ */

@@ -161,7 +161,10 @@ of the tetris area.
 26. Now if the block exceed the ceilling, the game will over. 
    In the step, we already draw a game over gui, without UT>
    But I encounter a bit difficult to real terminate the game (without UT, it is OK. But with UT, what's the responbilities?).
+ 
+27. Add the game over control logic. it is very ugly. 
+(TO be check it further )
 
-26. It is time to elimiate a whole row. (TBC)
+28. It is time to elimiate a whole row. (TBC)
 
 

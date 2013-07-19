@@ -18,13 +18,32 @@ GameController::GameController(IGraphcisController* graphcisController,
 	ShapeFactory shapeFactory;
 	existedBlockPlacement->put(shapeFactory.make(ShapeFactory::TYPE_NULL));
 	borderShapePlacement->put(shapeFactory.makeWall(22,10));
+	terminateFlag = false;
+}
+
+void GameController::clean() {
+	if (activeShapePlacement != 0)
+		delete activeShapePlacement;
+
+	delete borderShapePlacement;
+	delete existedBlockPlacement;
 }
 
 GameController::~GameController() {
-	if (activeShapePlacement!=0)
-		delete activeShapePlacement;
-	delete borderShapePlacement;
-	delete existedBlockPlacement;
+	clean();
+}
+
+void GameController::restart(){
+	clean();
+
+	activeShapePlacement = new ShapePlacement(0,0);
+	borderShapePlacement = new ShapePlacement(-1,-1);
+	existedBlockPlacement = new ShapePlacement(0,0);
+	ShapeFactory shapeFactory;
+	existedBlockPlacement->put(shapeFactory.make(ShapeFactory::TYPE_NULL));
+	borderShapePlacement->put(shapeFactory.makeWall(22,10));
+	terminateFlag = false;
+
 }
 
 void GameController::init(){
@@ -42,6 +61,7 @@ void GameController::reDraw() {
 void GameController::listenInputEvents(){
 	InputListener::Instruction instruct;
 	do {
+		if (terminateFlag) break;
 		instruct = inputListener->getInput();
 		switch(instruct){
 		case InputListener::MOVE_DOWN:
@@ -68,16 +88,21 @@ void GameController::start(){
 	listenInputEvents();
 }
 
+void GameController::terminate(){
+	terminateFlag = true;
+}
 void GameController::moveDownCollision() {
 	existedBlockPlacement->join(*activeShapePlacement);
 	Cell c =existedBlockPlacement->getAt(existedBlockPlacement->shapeSize()-1);
 	if (c.x == 0){
 		graphcisController->drawGameOver();
 		InputListener::Instruction instruct;
-		instruct = inputListener->getInput();
-		if (instruct == InputListener::NO)
-		{
+		inputListener->getInput();
+		if (instruct == InputListener::NO){
 			terminate();
+		}
+		else if (instruct == InputListener::YES){
+			restart();
 		}
 		return;
 	}
