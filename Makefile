@@ -9,19 +9,31 @@ SOURCE_OBJ:= $(SOURCE:src/%.cpp=obj/%.o)
 TESTS:= $(wildcard test/*.cpp)
 TESTS_OBJ:= $(TESTS:test/%.cpp=obj/%.o)
 
-OBJ:= $(SOURCE_OBJ) $(TESTS_OBJ)
+INTEGRATION_TESTS:= $(wildcard it/*.cpp)
+INTEGRATION_TESTS_OBJ:= $(INTEGRATION_TESTS:it/%.cpp=obj/%.o)
 
-TARGET:= obj/ut.exe
+UT_OBJ:= $(SOURCE_OBJ) $(TESTS_OBJ)
 
+IT_OBJ:= $(SOURCE_OBJ) $(INTEGRATION_TESTS_OBJ) $(TESTS_OBJ)
 
-all: $(TARGET)
-	$(TARGET)
+UT_TARGET:= obj/ut.exe
+
+IT_TARGET:=obj/it.exe
+
+all: $(UT_TARGET)
+	$(UT_TARGET)
 
 clean:
-	rm $(OBJ) $(TARGET) $(IT_TARGET) $(IT_TESTS_OBJ) 
+	rm $(UT_OBJ) $(UT_TARGET) $(IT_OBJ)  $(IT_TARGET)
 
-$(TARGET): $(OBJ)
-	$(CXX) $(OBJ) $(LD_LIBRARIES) -o $(TARGET)
+it: $(IT_TARGET)
+	$(IT_TARGET)
+
+$(UT_TARGET): $(UT_OBJ)
+	$(CXX) $(UT_OBJ) $(LD_LIBRARIES) -o $(UT_TARGET)
+
+$(IT_TARGET): $(IT_OBJ)
+	$(CXX) $(IT_OBJ) $(LD_LIBRARIES) -o $(IT_TARGET)
 
 $(SOURCE_OBJ):obj/%.o:src/%.cpp
 	$(CXX) $(CPPFLAGS) -c $< -o $@
@@ -29,3 +41,5 @@ $(SOURCE_OBJ):obj/%.o:src/%.cpp
 $(TESTS_OBJ):obj/%.o:test/%.cpp
 	$(CXX) $(CPPFLAGS) -c $< -o $@
 
+$(INTEGRATION_TESTS_OBJ):obj/%.o:it/%.cpp
+	$(CXX) $(CPPFLAGS) -c $< -o $@

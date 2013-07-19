@@ -3,10 +3,10 @@
 
 #include "ICollisionDetector.h"
 
-class NullCollisionDector:public ICollisionDetector{
+class NullCollisionDetector:public ICollisionDetector{
 public:
-	virtual ~NullCollisionDector(){};
-	virtual bool isCollision(ShapePlacement* first, ShapePlacement* second, InputListener::Instruction direction){
+	virtual ~NullCollisionDetector(){};
+	virtual bool isCollision(ShapePlacement* moveObj, ShapePlacement* stillObj, InputListener::Instruction direction){
 		return false;
 	};
 };

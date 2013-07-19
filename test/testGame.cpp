@@ -16,7 +16,7 @@ TEST_GROUP(Game_GUI_Control){
 	void setup(){
 		draw = new MockGraphcisController();
 		input = new NullInputListener();
-		collisionDetector = new NullCollisionDector();
+		collisionDetector = new NullCollisionDetector();
 		game = new GameController(draw, input, collisionDetector);
 	}
 	void teardown(){
@@ -63,7 +63,7 @@ TEST_GROUP(Game_Input){
 	void setup(){
 		input = new MockInputListener();
 		draw = new MockGraphcisController();
-		collisionDetector = new NullCollisionDector();
+		collisionDetector = new NullCollisionDetector();
 		game = new GameController(draw,input,collisionDetector);
 	}
 	void teardown(){
