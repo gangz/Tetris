@@ -10,13 +10,15 @@ TESTS:= $(wildcard test/*.cpp)
 TESTS_OBJ:= $(TESTS:test/%.cpp=obj/%.o)
 
 OBJ:= $(SOURCE_OBJ) $(TESTS_OBJ)
+
 TARGET:= obj/ut.exe
+
 
 all: $(TARGET)
 	$(TARGET)
 
 clean:
-	rm $(OBJ) $(TARGET)
+	rm $(OBJ) $(TARGET) $(IT_TARGET) $(IT_TESTS_OBJ) 
 
 $(TARGET): $(OBJ)
 	$(CXX) $(OBJ) $(LD_LIBRARIES) -o $(TARGET)
@@ -26,3 +28,4 @@ $(SOURCE_OBJ):obj/%.o:src/%.cpp
 
 $(TESTS_OBJ):obj/%.o:test/%.cpp
 	$(CXX) $(CPPFLAGS) -c $< -o $@
+
