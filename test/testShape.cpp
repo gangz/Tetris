@@ -19,5 +19,13 @@ TEST(Shape, can_produce_a_bar){
 	delete shape;
 }
 
+TEST(Shape, eleminate_a_whole_row){
+	ShapeFactory factory;
+	Shape* shape = factory.make(ShapeFactory::TYPE_BAR);
+	int rows = shape->eleminate(4);
+	CHECK_EQUAL(1,rows);
+	CHECK_EQUAL(0,shape->size());
+	delete shape;
+}
 
 

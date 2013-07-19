@@ -169,5 +169,7 @@ of the tetris area.
 28. It is time to elimiate a whole row. ()
     Add an empty interface. (it is key for IoP. Find interface)
 
+29. Add a quick stub for the eleminate in Shape class.
+
 
 

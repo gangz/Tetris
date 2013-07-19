@@ -38,3 +38,10 @@ Cell Shape::getAt(int pos) const{
 	assert(false); //should never reach here
 	return Cell(0,0);
 }
+
+int Shape::eleminate(int width_in_y){
+	//
+	cellList.clear();
+	return 1;
+}
+

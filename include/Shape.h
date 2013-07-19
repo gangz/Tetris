@@ -22,6 +22,7 @@ public:
 	int size() const;
 	void add(const Cell& c);
 	Cell getAt(int pos)  const;
+	int eleminate(int width_in_y);
 private:
 	std::list<Cell> cellList;
 };
