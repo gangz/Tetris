@@ -22,6 +22,7 @@ private:
 	ShapePlacement* activeShapePlacement;
 	ICollisionDetector* collisionDetector;
 	ShapePlacement* borderShapePlacement;
+	ShapePlacement* existedBlockPlacement;
 	void reDraw();
 	void listenInputEvents();
 	void createShape();

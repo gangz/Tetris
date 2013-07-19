@@ -11,6 +11,7 @@
 class ShapeFactory {
 public:
 	typedef enum {
+		TYPE_NULL,
 		TYPE_BAR,
 	}ShapeType;
 
@@ -23,6 +24,7 @@ public:
 	}
 	Shape* make(ShapeType type){
 		Shape* shape = make();
+
 		if (type==TYPE_BAR)
 		{
 			shape->add(Cell(0,0));

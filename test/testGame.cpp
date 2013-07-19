@@ -46,7 +46,7 @@ TEST(Game_GUI_Control, init_game_gui){
 };
 
 TEST(Game_GUI_Control, start_game_will_produce_first_block){
-	mock().expectOneCall("IGraphcisController::drawShape")
+	mock().expectNCalls(2,"IGraphcisController::drawShape")
 			.onObject(draw)
 			.ignoreOtherParameters();
 	mock().ignoreOtherCalls();

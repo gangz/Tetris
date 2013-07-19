@@ -13,7 +13,9 @@ GameController::GameController(IGraphcisController* graphcisController,
 		collisionDetector(collisionDetector){
 	activeShapePlacement = new ShapePlacement(0,0);
 	borderShapePlacement = new ShapePlacement(-1,-1);
+	existedBlockPlacement = new ShapePlacement(0,0);
 	ShapeFactory shapeFactory;
+	existedBlockPlacement->put(shapeFactory.make(ShapeFactory::TYPE_NULL));
 	borderShapePlacement->put(shapeFactory.makeWall(22,10));
 }
 
@@ -21,6 +23,7 @@ GameController::~GameController() {
 	if (activeShapePlacement!=0)
 		delete activeShapePlacement;
 	delete borderShapePlacement;
+	delete existedBlockPlacement;
 }
 
 void GameController::init(){
@@ -32,6 +35,7 @@ void GameController::init(){
 void GameController::reDraw() {
 	graphcisController->cleanTetrisArea();
 	graphcisController->drawShape(activeShapePlacement);
+	graphcisController->drawShape(existedBlockPlacement);
 }
 
 void GameController::listenInputEvents(){
@@ -64,8 +68,15 @@ void GameController::start(){
 }
 
 void GameController::keyDown(){
-	if (collisionDetector->isCollision(activeShapePlacement,borderShapePlacement,InputListener::MOVE_DOWN))
+	if (collisionDetector->isCollision(activeShapePlacement,borderShapePlacement,InputListener::MOVE_DOWN)||
+			collisionDetector->isCollision(activeShapePlacement,existedBlockPlacement,InputListener::MOVE_DOWN))
+	{
+		existedBlockPlacement->join(*activeShapePlacement);
+		delete activeShapePlacement;
+		activeShapePlacement = new ShapePlacement(0,0);
+		createShape();
 		return;
+	}
 	activeShapePlacement->moveDown();
 	reDraw();
 }

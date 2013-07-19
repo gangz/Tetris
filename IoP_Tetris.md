@@ -154,6 +154,8 @@ of the tetris area.
     Also, in the step, we detected a strange error: I found it for a long time
     It is happen in the GraphcisController::drawShape, there is an offset of 4 position. Dirty solution make the issue is difficult to be found.
 
+24. The next step is to produce a new shape if the active shape hit the wall in move_down. Firstly, we can join two shape.
 
+25. Integrate the join shape function to game.
 
 

@@ -34,7 +34,7 @@ void ShapePlacement::moveLeft(){
 }
 
 int ShapePlacement::shapeSize() const{
-	assert(shape!=0);
+	assert(shape != 0);
 	return shape->size();
 }
 
