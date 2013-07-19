@@ -1,7 +1,7 @@
 #ifndef NULLCOLLISIONDECTOR_H_
 #define NULLCOLLISIONDECTOR_H_
 
-#include "CollisionDetector.h"
+#include "ICollisionDetector.h"
 
 class NullCollisionDector:public ICollisionDetector{
 public:

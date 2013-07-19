@@ -146,4 +146,9 @@ of the tetris area.
 
 21. Add collision detector interfaces.
 
+22. (Because the Null object already play a role of collision detector stub,
+     it is not necessary to mock the collision interface -- low risk).
+    We implement the real colision detector immeidately.
+
+
 

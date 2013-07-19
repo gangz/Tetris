@@ -4,7 +4,7 @@
 #include "ShapeFactory.h"
 #include "ShapePlacement.h"
 #include "IInputListener.h"
-#include "CollisionDetector.h"
+#include "ICollisionDetector.h"
 
 GameController::GameController(IGraphcisController* graphcisController,
 		InputListener* inputController,

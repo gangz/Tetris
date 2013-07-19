@@ -126,8 +126,8 @@ TEST_GROUP(GameNCurses_With_Input){
 	}
 };
 
-#undef PAUSE
-#define PAUSE() getch()
+//#undef PAUSE
+//#define PAUSE() getch()
 TEST(GameNCurses_With_Input, key_down_will_move_block_down_gui){
 	game->init();
 	game->start();
