@@ -5,6 +5,7 @@ NcursesGraphcisDriver::NcursesGraphcisDriver() {
 	initscr();
 	noecho();
 	cbreak();	/* Line buffering disabled. pass on everything */
+	keypad(stdscr,true);
 	box(stdscr,ACS_VLINE,ACS_HLINE);
 }
 

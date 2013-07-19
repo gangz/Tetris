@@ -7,23 +7,31 @@
 #include "GraphcisController.h"
 #include "Game.h"
 #include "MockInputListener.h"
+#include "NullInputListener.h"
+#include "NullCollisionDetector.h"
 #define PAUSE() (void)0
 //#define PAUSE() getch()
 
 TEST_GROUP(GameNCurses){
-	Game* game;
+	GameController* game;
 	IGraphcisController* graphController;
 	IGraphcisDriver* graphDriver;
+	InputListener* input;
+	ICollisionDetector* collisiondetector;
 	void setup(){
 		graphDriver = new NcursesGraphcisDriver();
 		graphController = new GraphcisController(graphDriver);
-		game = new Game(graphController);
+		collisiondetector = new NullCollisionDector();
+		input = new NullInputListener();
+		game = new GameController(graphController, input, collisiondetector);
 	}
 	void teardown(){
 		mock().clear();
 		delete game;
 		delete graphController;
 		delete graphDriver;
+		delete collisiondetector;
+		delete input;
 	}
 };
 
@@ -50,22 +58,26 @@ TEST(GameNCurses, key_down_will_move_block_down){
 };
 
 TEST_GROUP(GameNCurses_MockInput){
-	Game* game;
+	GameController* game;
 	IGraphcisController* graphController;
 	IGraphcisDriver* graphDriver;
 	InputListener* input;
+	ICollisionDetector* collisiondetector;
 
 	void setup(){
 		graphDriver = new NcursesGraphcisDriver();
 		graphController = new GraphcisController(graphDriver);
 		input = new MockInputListener();
-		game = new Game(graphController,input);
+		collisiondetector = new NullCollisionDector();
+
+		game = new GameController(graphController,input,collisiondetector);
 	}
 	void teardown(){
 		mock().clear();
 		delete game;
 		delete graphController;
 		delete graphDriver;
+		delete collisiondetector;
 		delete input;
 	}
 };
@@ -91,16 +103,18 @@ TEST(GameNCurses_MockInput, key_down_will_move_block_down_gui){
 
 #include "KeyboardInputListener.h"
 TEST_GROUP(GameNCurses_With_Input){
-	Game* game;
+	GameController* game;
 	IGraphcisController* graphController;
 	IGraphcisDriver* graphDriver;
+	ICollisionDetector* collisionDetector;
 	InputListener* input;
 
 	void setup(){
 		graphDriver = new NcursesGraphcisDriver();
 		graphController = new GraphcisController(graphDriver);
 		input = new KeyboardInputListener();
-		game = new Game(graphController,input);
+		collisionDetector  = new NullCollisionDector();
+		game = new GameController(graphController,input, collisionDetector);
 	}
 	void teardown(){
 		mock().clear();
@@ -108,6 +122,7 @@ TEST_GROUP(GameNCurses_With_Input){
 		delete graphController;
 		delete graphDriver;
 		delete input;
+		delete collisionDetector;
 	}
 };
 
@@ -116,5 +131,4 @@ TEST_GROUP(GameNCurses_With_Input){
 TEST(GameNCurses_With_Input, key_down_will_move_block_down_gui){
 	game->init();
 	game->start();
-	//PAUSE();
 };

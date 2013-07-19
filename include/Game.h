@@ -4,11 +4,13 @@
 class IGraphcisController;
 class InputListener;
 class ShapePlacement;
-class Game {
+class ICollisionDetector;
+class GameController {
 public:
-	Game(IGraphcisController* graphcisController=0,
-		 InputListener* inputController=0);
-	virtual ~Game();
+	GameController(IGraphcisController* graphcisController,
+		 InputListener* inputController,
+		 ICollisionDetector* collisionDetector);
+	virtual ~GameController();
 	void init();
 	void start();
 	void keyDown();
@@ -18,7 +20,8 @@ private:
 	IGraphcisController* graphcisController;
 	InputListener* inputListener;
 	ShapePlacement* activeShapePlacement;
-
+	ICollisionDetector* collisionDetector;
+	ShapePlacement* borderShapePlacement;
 	void reDraw();
 	void listenInputEvents();
 	void createShape();

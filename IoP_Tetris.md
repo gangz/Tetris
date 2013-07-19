@@ -140,6 +140,10 @@ of the tetris area.
 19. Then the shape can be moved left or right.
 
 20. Then we try to add a key listener to accept input from player.
+    Now I can move the block using keyboard.
+    But, . The shape can move to any place. so we should have a 
+    new class which could found it already moved to border.
 
+21. Add collision detector interfaces.
 
 

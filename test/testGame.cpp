@@ -3,25 +3,34 @@
 #include "IGraphcisController.h"
 #include "MockGraphcisController.h"
 #include "MockInputListener.h"
+#include "NullInputListener.h"
+#include "NullCollisionDetector.h"
+
 #include "Game.h"
 
 TEST_GROUP(Game_GUI_Control){
-	Game *game;
+	GameController *game;
 	IGraphcisController* draw;
+	InputListener* input;
+	ICollisionDetector* collisionDetector;
 	void setup(){
 		draw = new MockGraphcisController();
-		game = new Game(draw);
+		input = new NullInputListener();
+		collisionDetector = new NullCollisionDector();
+		game = new GameController(draw, input, collisionDetector);
 	}
 	void teardown(){
 		mock().clear();
 		delete game;
 		delete draw;
+		delete collisionDetector;
+		delete input;
 	}
 };
 
 
 TEST(Game_GUI_Control, init_game_gui){
-	IGraphcisController* draw = new MockGraphcisController();
+
 	mock().expectOneCall("IGraphcisController::initGUI")
 			.onObject(draw)
 			.ignoreOtherParameters();
@@ -31,10 +40,9 @@ TEST(Game_GUI_Control, init_game_gui){
 	mock().expectOneCall("IGraphcisController::writeSpeed")
 			.onObject(draw)
 			.withParameter("speed",0);
-	Game g(draw);
-	g.init();
+
+	game->init();
 	mock().checkExpectations();
-	delete draw;
 };
 
 TEST(Game_GUI_Control, start_game_will_produce_first_block){
@@ -48,19 +56,22 @@ TEST(Game_GUI_Control, start_game_will_produce_first_block){
 };
 
 TEST_GROUP(Game_Input){
-	Game *game;
+	GameController *game;
 	IGraphcisController* draw;
 	InputListener* input;
+	ICollisionDetector* collisionDetector;
 	void setup(){
 		input = new MockInputListener();
 		draw = new MockGraphcisController();
-		game = new Game(draw,input);
+		collisionDetector = new NullCollisionDector();
+		game = new GameController(draw,input,collisionDetector);
 	}
 	void teardown(){
 		mock().clear();
 		delete game;
 		delete draw;
 		delete input;
+		delete collisionDetector;
 	}
 };
 TEST(Game_Input,start_game_will_listen_input){
