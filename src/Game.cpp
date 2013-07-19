@@ -12,12 +12,15 @@ GameController::GameController(IGraphcisController* graphcisController,
 		inputListener(inputController),
 		collisionDetector(collisionDetector){
 	activeShapePlacement = new ShapePlacement(0,0);
-	borderShapePlacement = 0;
+	borderShapePlacement = new ShapePlacement(-1,-1);
+	ShapeFactory shapeFactory;
+	borderShapePlacement->put(shapeFactory.makeWall(22,10));
 }
 
 GameController::~GameController() {
 	if (activeShapePlacement!=0)
 		delete activeShapePlacement;
+	delete borderShapePlacement;
 }
 
 void GameController::init(){

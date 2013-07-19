@@ -27,10 +27,10 @@ void NcursesGraphcisDriver::drawBox(Point left_top, Point right_bottom){
 	hline('_',width);
 
 	move(left_top.x+1, 2*left_top.y);
-	vline(ACS_VLINE,height);
+	vline('|',height);
 
 	move(left_top.x+1, 2*right_bottom.y+2);
-	vline(ACS_VLINE,height);
+	vline('|',height);
 
 	move(right_bottom.x+1, 2*left_top.y+1);
 	hline('_',width);

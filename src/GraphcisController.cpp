@@ -82,7 +82,7 @@ void GraphcisController::drawShape(const ShapePlacement* const shape){
 	for (int i=0;i < shape->shapeSize();i++){
 		Cell c = shape->getAt(i);
 		driver->drawCell(Point(TETRIS_POS_V+1+c.x,
-				      TETRIS_POS_H + TETRIS_WIDTH/2-1+c.y));
+				      TETRIS_POS_H + 1 +c.y));
 	}
 }
 

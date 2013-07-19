@@ -4,7 +4,8 @@
 class InputListener{
 public:
 	typedef enum {
-		EXIST=1,
+		IGNORE,
+		EXIST,
 		MOVE_LEFT,
 		MOVE_RIGHT,
 		MOVE_DOWN

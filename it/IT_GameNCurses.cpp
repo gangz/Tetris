@@ -9,6 +9,7 @@
 #include "MockInputListener.h"
 #include "NullInputListener.h"
 #include "NullCollisionDetector.h"
+#include "CollisionDetector.h"
 #define PAUSE() (void)0
 //#define PAUSE() getch()
 
@@ -21,7 +22,7 @@ TEST_GROUP(GameNCurses){
 	void setup(){
 		graphDriver = new NcursesGraphcisDriver();
 		graphController = new GraphcisController(graphDriver);
-		collisiondetector = new NullCollisionDector();
+		collisiondetector = new NullCollisionDetector();
 		input = new NullInputListener();
 		game = new GameController(graphController, input, collisiondetector);
 	}
@@ -68,7 +69,7 @@ TEST_GROUP(GameNCurses_MockInput){
 		graphDriver = new NcursesGraphcisDriver();
 		graphController = new GraphcisController(graphDriver);
 		input = new MockInputListener();
-		collisiondetector = new NullCollisionDector();
+		collisiondetector = new NullCollisionDetector();
 
 		game = new GameController(graphController,input,collisiondetector);
 	}
@@ -113,7 +114,7 @@ TEST_GROUP(GameNCurses_With_Input){
 		graphDriver = new NcursesGraphcisDriver();
 		graphController = new GraphcisController(graphDriver);
 		input = new KeyboardInputListener();
-		collisionDetector  = new NullCollisionDector();
+		collisionDetector  = new CollisionDetector();
 		game = new GameController(graphController,input, collisionDetector);
 	}
 	void teardown(){

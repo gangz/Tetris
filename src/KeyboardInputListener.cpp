@@ -25,5 +25,5 @@ InputListener::Instruction KeyboardInputListener::getInput(){
 	case KEY_DOWN:
 		return InputListener::MOVE_DOWN;
 	}
-	return InputListener::EXIST;
+	return InputListener::IGNORE;
 }

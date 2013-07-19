@@ -150,5 +150,10 @@ of the tetris area.
      it is not necessary to mock the collision interface -- low risk).
     We implement the real colision detector immeidately.
 
+23. Now we integrate the collision detector with the wall of tetris.
+    Also, in the step, we detected a strange error: I found it for a long time
+    It is happen in the GraphcisController::drawShape, there is an offset of 4 position. Dirty solution make the issue is difficult to be found.
+
+
 
 
