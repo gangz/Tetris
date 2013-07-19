@@ -91,21 +91,31 @@ void GameController::start(){
 void GameController::terminate(){
 	terminateFlag = true;
 }
-void GameController::moveDownCollision() {
-	existedBlockPlacement->join(*activeShapePlacement);
+
+bool GameController::checkGameOver() {
 	Cell c =existedBlockPlacement->getAt(existedBlockPlacement->shapeSize()-1);
-	if (c.x == 0){
+	if (c.x == 0) {
 		graphcisController->drawGameOver();
 		InputListener::Instruction instruct;
 		inputListener->getInput();
-		if (instruct == InputListener::NO){
+		if (instruct == InputListener::NO) {
 			terminate();
-		}
-		else if (instruct == InputListener::YES){
+		} else if (instruct == InputListener::YES) {
 			restart();
 		}
-		return;
+		return true;
 	}
+	return false;
+}
+
+void GameController::eleminateRows() {
+
+}
+
+void GameController::moveDownCollision() {
+	existedBlockPlacement->join(*activeShapePlacement);
+	eleminateRows();
+	if (checkGameOver()) return;
 	delete activeShapePlacement;
 	activeShapePlacement = new ShapePlacement(0, 0);
 	createShape();

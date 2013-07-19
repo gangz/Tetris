@@ -163,8 +163,11 @@ of the tetris area.
    But I encounter a bit difficult to real terminate the game (without UT, it is OK. But with UT, what's the responbilities?).
  
 27. Add the game over control logic. it is very ugly. 
-(TO be check it further )
+(TO be check it further ) 
+     [master 570a24b] Add game over control
 
-28. It is time to elimiate a whole row. (TBC)
+28. It is time to elimiate a whole row. ()
+    Add an empty interface. (it is key for IoP. Find interface)
+
 
 

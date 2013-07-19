@@ -30,6 +30,9 @@ private:
 	void terminate();
 	void clean();
 	void restart();
+	bool checkGameOver();
+	void eleminateRows();
+
 	bool terminateFlag;
 };
 
