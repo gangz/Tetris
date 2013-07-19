@@ -33,6 +33,10 @@ public:
 		mock().actualCall("IGraphcisController::cleanTetrisArea")
 					  .onObject(this);
 	}
+	virtual void drawGameOver(){
+		mock().actualCall("IGraphcisController::drawGameOver")
+					  .onObject(this);
+	}
 
 };
 

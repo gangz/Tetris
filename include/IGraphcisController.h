@@ -9,5 +9,6 @@ public:
 	virtual void writeSpeed(int speed)=0;
 	virtual void drawShape(const ShapePlacement* const shape)=0;
 	virtual void cleanTetrisArea()=0;
+	virtual void drawGameOver()=0;
 };
 #endif /* IGRAPHCIS_CONTROLLER_H_ */

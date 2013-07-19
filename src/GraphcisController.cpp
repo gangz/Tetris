@@ -92,4 +92,17 @@ void GraphcisController::cleanTetrisArea(){
 			driver->writeText(Point(c,r),"  ");
 }
 
+void GraphcisController::drawGameOver(){
+	int v_1 = TETRIS_POS_V+6;
+	int v_2 = v_1+4;
+	int h_1 = TETRIS_POS_H;
+	int h_2 = h_1+ 18;
+	for(int c = h_1;c<=h_2;c++)
+		for (int r = v_1; r<=v_2; r++)
+			driver->writeText(Point(r,c),"  ");
+	driver->drawBox(Point(v_1,h_1),
+			Point(v_2,h_2));
+	driver->writeText(Point(v_1+3,h_1+2),"Game Over. Start a new Game(Y/N)?");
+}
+
 

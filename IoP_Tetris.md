@@ -144,7 +144,7 @@ of the tetris area.
     But, . The shape can move to any place. so we should have a 
     new class which could found it already moved to border.
 
-21. Add collision detector interfaces.
+21. Add collision detector interfaces. I also found that NullObject play a key role in the IoP programming.
 
 22. (Because the Null object already play a role of collision detector stub,
      it is not necessary to mock the collision interface -- low risk).
@@ -157,5 +157,11 @@ of the tetris area.
 24. The next step is to produce a new shape if the active shape hit the wall in move_down. Firstly, we can join two shape.
 
 25. Integrate the join shape function to game.
+
+26. Now if the block exceed the ceilling, the game will over. 
+   In the step, we already draw a game over gui, without UT>
+   But I encounter a bit difficult to real terminate the game (without UT, it is OK. But with UT, what's the responbilities?).
+
+26. It is time to elimiate a whole row. (TBC)
 
 

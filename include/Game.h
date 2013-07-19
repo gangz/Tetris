@@ -26,6 +26,7 @@ private:
 	void reDraw();
 	void listenInputEvents();
 	void createShape();
+	void moveDownCollision();
 };
 
 #endif /* GAME_H_ */

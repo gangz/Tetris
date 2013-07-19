@@ -24,6 +24,9 @@ InputListener::Instruction KeyboardInputListener::getInput(){
 	case 's':
 	case KEY_DOWN:
 		return InputListener::MOVE_DOWN;
+	case 'n':
+	case 'N':
+		return InputListener::NO;
 	}
 	return InputListener::IGNORE;
 }

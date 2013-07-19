@@ -5,6 +5,7 @@
 #include "ShapePlacement.h"
 #include "IInputListener.h"
 #include "ICollisionDetector.h"
+#include "stdlib.h"
 
 GameController::GameController(IGraphcisController* graphcisController,
 		InputListener* inputController,
@@ -67,14 +68,29 @@ void GameController::start(){
 	listenInputEvents();
 }
 
+void GameController::moveDownCollision() {
+	existedBlockPlacement->join(*activeShapePlacement);
+	Cell c =existedBlockPlacement->getAt(existedBlockPlacement->shapeSize()-1);
+	if (c.x == 0){
+		graphcisController->drawGameOver();
+		InputListener::Instruction instruct;
+		instruct = inputListener->getInput();
+		if (instruct == InputListener::NO)
+		{
+			terminate();
+		}
+		return;
+	}
+	delete activeShapePlacement;
+	activeShapePlacement = new ShapePlacement(0, 0);
+	createShape();
+}
+
 void GameController::keyDown(){
 	if (collisionDetector->isCollision(activeShapePlacement,borderShapePlacement,InputListener::MOVE_DOWN)||
 			collisionDetector->isCollision(activeShapePlacement,existedBlockPlacement,InputListener::MOVE_DOWN))
 	{
-		existedBlockPlacement->join(*activeShapePlacement);
-		delete activeShapePlacement;
-		activeShapePlacement = new ShapePlacement(0,0);
-		createShape();
+		moveDownCollision();
 		return;
 	}
 	activeShapePlacement->moveDown();

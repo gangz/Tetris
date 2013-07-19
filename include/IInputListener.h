@@ -8,7 +8,9 @@ public:
 		EXIST,
 		MOVE_LEFT,
 		MOVE_RIGHT,
-		MOVE_DOWN
+		MOVE_DOWN,
+		NO,
+		YES,
 	}Instruction;
 	virtual ~InputListener(){};
 	virtual Instruction getInput()=0;
