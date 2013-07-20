@@ -192,8 +192,9 @@ of the tetris area.
 37. Add the real implementation of the timer, and add the timer to GameController. The integration test shows that it is not the expected beahvior because Timer's redraw is blocked by getch();
 
 
+38. Tried multi thread for block falldown. it is not succeed. and encountered memory leak, core dump, etc. roll back.
 
-
+39. Finally, I found the easiest way: refresh to avoid the getch to block the program
 
 
 

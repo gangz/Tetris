@@ -42,9 +42,11 @@ void NcursesGraphcisDriver::drawBox(Point left_top, Point right_bottom){
 void NcursesGraphcisDriver::writeText(Point pos, std::string text){
 	move(pos.x, 2*pos.y); /*move the cursor to the center*/
 	waddstr(stdscr, text.c_str());
+	 refresh();
 }
 
 void NcursesGraphcisDriver::drawCell(Point pos){
 	move(pos.x, 2*pos.y);
 	waddstr(stdscr, "[]");
+	 refresh();
 }

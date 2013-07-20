@@ -1,5 +1,6 @@
 #include "KeyboardInputListener.h"
 #include "ncurses.h"
+#include <unistd.h>
 KeyboardInputListener::KeyboardInputListener() {
 	// TODO Auto-generated constructor stub
 
@@ -32,5 +33,6 @@ InputListener::Instruction KeyboardInputListener::getInput(){
 		return InputListener::YES;
 
 	}
+	sleep(100);
 	return InputListener::IGNORE;
 }
