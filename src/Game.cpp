@@ -113,9 +113,15 @@ void GameController::eleminateRows() {
 	existedBlockPlacement->eleminate(8);
 }
 
+void GameController::fallDownExistShape() {
+	while(!collisionDetector->isCollision(existedBlockPlacement,borderShapePlacement,InputListener::MOVE_DOWN))
+		existedBlockPlacement->moveDown();
+}
+
 void GameController::moveDownCollision() {
 	existedBlockPlacement->join(*activeShapePlacement);
 	eleminateRows();
+	fallDownExistShape();
 	if (checkGameOver()) return;
 	delete activeShapePlacement;
 	activeShapePlacement = new ShapePlacement(0, 0);

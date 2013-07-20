@@ -171,5 +171,12 @@ of the tetris area.
 
 29. Add a quick stub for the eleminate in Shape class.
 
+30. Add the implementation of Shape.  
+
+31. Found a new feature: the shape show fall down after row elemination. Can we call existPlacement.move? After try it, it support fall down in case of last row is empty. But it do not support fall down the middle rows.
+
+
+
+
 
 
