@@ -13,6 +13,9 @@ public:
 	typedef enum {
 		TYPE_NULL,
 		TYPE_BAR,
+		TYPE_SQUARE,
+		TYPE_Z,
+		TYPE_L,
 	}ShapeType;
 
 public:
@@ -25,12 +28,26 @@ public:
 	Shape* make(ShapeType type){
 		Shape* shape = make();
 
-		if (type==TYPE_BAR)
-		{
-			shape->add(Cell(0,0));
-			shape->add(Cell(0,1));
-			shape->add(Cell(0,2));
-			shape->add(Cell(0,3));
+		if (type == TYPE_BAR) {
+			shape->add(Cell(0, 0));
+			shape->add(Cell(0, 1));
+			shape->add(Cell(0, 2));
+			shape->add(Cell(0, 3));
+		} else if (type == TYPE_SQUARE) {
+			shape->add(Cell(0, 0));
+			shape->add(Cell(0, 1));
+			shape->add(Cell(1, 0));
+			shape->add(Cell(1, 1));
+		} else if (type == TYPE_Z) {
+			shape->add(Cell(0, 0));
+			shape->add(Cell(0, 1));
+			shape->add(Cell(1, 1));
+			shape->add(Cell(1, 2));
+		} else if (type == TYPE_L) {
+			shape->add(Cell(0, 0));
+			shape->add(Cell(0, 1));
+			shape->add(Cell(0, 2));
+			shape->add(Cell(1, 2));
 		}
 		return shape;
 	}

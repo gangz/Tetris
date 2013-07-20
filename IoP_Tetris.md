@@ -196,6 +196,7 @@ of the tetris area.
 
 39. Finally, I found the easiest way: refresh to avoid the getch to block the program
 
-
+40. Now we can add more shapes into the game. 
+    I also found a bug: move left and right have no check with exist blocks. Add it. 
 
 

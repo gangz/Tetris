@@ -15,3 +15,12 @@ TEST(ShapeFactory, make_a_wall){
 	CHECK_EQUAL(0,c.y);
 	delete shape;
 }
+
+TEST(ShapeFactory, make_a_square){
+
+	Shape* shape = shapeFactory.make(ShapeFactory::TYPE_SQUARE);
+	CHECK_EQUAL(4,shape->size());
+	delete shape;
+}
+
+

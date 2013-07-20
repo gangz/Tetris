@@ -84,7 +84,7 @@ void GameController::listenInputEvents(){
 
 void GameController::createShape(){
 	ShapeFactory shapeFactory;
-	Shape* activeShape = shapeFactory.make(ShapeFactory::TYPE_BAR);
+	Shape* activeShape = shapeFactory.make(ShapeFactory::TYPE_L);
 	activeShapePlacement->put(activeShape);
 
 }
@@ -141,14 +141,16 @@ void GameController::keyDown(){
 }
 
 void GameController::keyLeft(){
-	if (collisionDetector->isCollision(activeShapePlacement,borderShapePlacement,InputListener::MOVE_LEFT))
+	if (collisionDetector->isCollision(activeShapePlacement,borderShapePlacement,InputListener::MOVE_LEFT)||
+			collisionDetector->isCollision(activeShapePlacement,existedBlockPlacement,InputListener::MOVE_LEFT))
 		return;
 	activeShapePlacement->moveLeft();
 	reDraw();
 }
 
 void GameController::keyRight(){
-	if (collisionDetector->isCollision(activeShapePlacement,borderShapePlacement,InputListener::MOVE_RIGHT))
+	if (collisionDetector->isCollision(activeShapePlacement,borderShapePlacement,InputListener::MOVE_RIGHT)||
+			collisionDetector->isCollision(activeShapePlacement,existedBlockPlacement,InputListener::MOVE_RIGHT))
 		return;
 	activeShapePlacement->moveRight();
 	reDraw();
