@@ -56,6 +56,7 @@ void GameController::reDraw() {
 	graphcisController->cleanTetrisArea();
 	graphcisController->drawShape(activeShapePlacement);
 	graphcisController->drawShape(existedBlockPlacement);
+	graphcisController->writeScore(_scoreKeeper.score());
 }
 
 void GameController::listenInputEvents(){
@@ -110,7 +111,8 @@ bool GameController::checkGameOver() {
 }
 
 void GameController::eleminateRows() {
-	existedBlockPlacement->eleminate(8);
+	int rows = existedBlockPlacement->eleminate(8);
+	_scoreKeeper.eleminateRows(rows);
 }
 
 void GameController::fallDownExistShape() {

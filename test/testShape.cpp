@@ -2,7 +2,7 @@
 #include "CppUTestExt/MockSupport.h"
 
 #include "ShapeFactory.h"
-
+#include "ShapePlacement.h"
 TEST_GROUP(Shape){
 
 };
@@ -27,6 +27,7 @@ TEST(Shape, eleminate_a_whole_row){
 	CHECK_EQUAL(0,shape->size());
 	delete shape;
 }
+
 
 TEST(Shape, eleminate_a_row_should_be_compressed){
 	Shape* shape = new Shape();

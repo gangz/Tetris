@@ -1,10 +1,11 @@
 #ifndef GAME_H_
 #define GAME_H_
-
+#include "ScoreKeeper.h"
 class IGraphcisController;
 class InputListener;
 class ShapePlacement;
 class ICollisionDetector;
+
 class GameController {
 public:
 	GameController(IGraphcisController* graphcisController,
@@ -35,6 +36,7 @@ private:
 	void fallDownExistShape();
 
 	bool terminateFlag;
+	ScoreKeeper _scoreKeeper;
 };
 
 #endif /* GAME_H_ */

@@ -177,7 +177,16 @@ of the tetris area.
 
 32. It reveal a bug, when the row is eleminate in step 30, the shape should be compressed to remove blank line. i.e. all   row less then the eleminated row should  moved down 1 row (row +=1;) 
       OK, add a ut, to implement it  and integrate it immediately.
- 
+
+33. It is time to change score of the  game based on eleminated rows.
+    (Thinking: should   outside-in, or in-outside? scorer is easier. no need to discovery. discovery is key to dertermine outside -in or not.)
+    Add score keeper (ut+ implementation)
+
+34. Integrate it into the game immediately.
+   
+
+35. during step 34, found a new error: the last row compress will goto endless loop
+
 
 
 
