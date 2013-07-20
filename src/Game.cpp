@@ -5,45 +5,50 @@
 #include "ShapePlacement.h"
 #include "IInputListener.h"
 #include "ICollisionDetector.h"
+#include "BlockMoveDown.h"
 #include "stdlib.h"
+#include "LinuxTimer.h"
+
+void GameController::createGame() {
+	activeShapePlacement = new ShapePlacement(0, 0);
+	borderShapePlacement = new ShapePlacement(-1, -1);
+	existedBlockPlacement = new ShapePlacement(0, 0);
+	blockMoveDown = new BlockMoveDown(this);
+	timer = new LinuxTimer();
+	timer->registerEventListener(blockMoveDown);
+	ShapeFactory shapeFactory;
+	existedBlockPlacement->put(shapeFactory.make(ShapeFactory::TYPE_NULL));
+	borderShapePlacement->put(shapeFactory.makeWall(22, 10));
+	terminateFlag = false;
+	timer->start();
+}
+
+void GameController::cleanGame() {
+	if (activeShapePlacement != 0)
+		delete activeShapePlacement;
+
+	delete borderShapePlacement;
+	delete existedBlockPlacement;
+	delete timer;
+	delete blockMoveDown;
+}
 
 GameController::GameController(IGraphcisController* graphcisController,
 		InputListener* inputController,
 		ICollisionDetector* collisionDetector):graphcisController(graphcisController) ,
 		inputListener(inputController),
 		collisionDetector(collisionDetector){
-	activeShapePlacement = new ShapePlacement(0,0);
-	borderShapePlacement = new ShapePlacement(-1,-1);
-	existedBlockPlacement = new ShapePlacement(0,0);
-	ShapeFactory shapeFactory;
-	existedBlockPlacement->put(shapeFactory.make(ShapeFactory::TYPE_NULL));
-	borderShapePlacement->put(shapeFactory.makeWall(22,10));
-	terminateFlag = false;
+	createGame();
 }
 
-void GameController::clean() {
-	if (activeShapePlacement != 0)
-		delete activeShapePlacement;
-
-	delete borderShapePlacement;
-	delete existedBlockPlacement;
-}
 
 GameController::~GameController() {
-	clean();
+	cleanGame();
 }
 
 void GameController::restart(){
-	clean();
-
-	activeShapePlacement = new ShapePlacement(0,0);
-	borderShapePlacement = new ShapePlacement(-1,-1);
-	existedBlockPlacement = new ShapePlacement(0,0);
-	ShapeFactory shapeFactory;
-	existedBlockPlacement->put(shapeFactory.make(ShapeFactory::TYPE_NULL));
-	borderShapePlacement->put(shapeFactory.makeWall(22,10));
-	terminateFlag = false;
-
+	cleanGame();
+	createGame();
 }
 
 void GameController::init(){

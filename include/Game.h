@@ -1,11 +1,12 @@
 #ifndef GAME_H_
 #define GAME_H_
 #include "ScoreKeeper.h"
+class BlockMoveDown;
 class IGraphcisController;
 class InputListener;
 class ShapePlacement;
 class ICollisionDetector;
-
+class ITimer;
 class GameController {
 public:
 	GameController(IGraphcisController* graphcisController,
@@ -24,15 +25,18 @@ private:
 	ICollisionDetector* collisionDetector;
 	ShapePlacement* borderShapePlacement;
 	ShapePlacement* existedBlockPlacement;
+	BlockMoveDown* blockMoveDown;
+	ITimer* timer;
 	void reDraw();
 	void listenInputEvents();
 	void createShape();
 	void moveDownCollision();
 	void terminate();
-	void clean();
+	void cleanGame();
 	void restart();
 	bool checkGameOver();
 	void eleminateRows();
+	void createGame();
 
 	bool terminateFlag;
 	ScoreKeeper _scoreKeeper;
