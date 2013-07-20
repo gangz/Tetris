@@ -14,12 +14,13 @@ TEST_GROUP(TimerTest){
 };
 
 
-TEST(TimerTest, start_a_timer_should_received_notification){
+IGNORE_TEST(TimerTest, start_a_timer_should_received_notification){
 	ITimerEventListener *listener = new MockTimerEventListener();
 	mock().expectOneCall("ITimerEventListener::timeOut")
 		  .onObject(listener);
 	timer->registerEventListener(listener);
 	timer->start();
+	sleep(4000);
 	mock().checkExpectations();
 	delete listener;
 };

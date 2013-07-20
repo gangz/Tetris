@@ -8,6 +8,7 @@ public:
 	virtual ~LinuxTimer();
 	virtual void registerEventListener(ITimerEventListener *listener);
 	virtual void start();
+	void timeout();
 private:
 	std::vector<ITimerEventListener*> listeners;
 };

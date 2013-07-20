@@ -187,7 +187,9 @@ of the tetris area.
 
 35. during step 34, found a new error: the last row compress will goto endless loop. it is due to there is an empty shape check collision. remove the unused falldown shape. it is OK again.
 
-36. To make it fall down automatically. Add a timer.
+36. To make it fall down automatically. Add a timer. Firstly let's clarify the interfaces.
+
+37. Add the real implementation of the timer
 
 
 
