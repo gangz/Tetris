@@ -1,7 +1,7 @@
 CPPUTEST_HOME := /home/topcoder/alus_excerise/CppUTest
 CPPFLAGS += -I$(CPPUTEST_HOME)/include
 CPPFLAGS += -Iinclude
-LD_LIBRARIES = -L $(CPPUTEST_HOME)/lib -lCppUTest -lCppUTestExt -lncurses
+LD_LIBRARIES = -L $(CPPUTEST_HOME)/lib -lCppUTest -lCppUTestExt -lncurses -lpthread
 
 SOURCE:= $(wildcard src/*.cpp)
 SOURCE_OBJ:= $(SOURCE:src/%.cpp=obj/%.o)

@@ -189,7 +189,8 @@ of the tetris area.
 
 36. To make it fall down automatically. Add a timer. Firstly let's clarify the interfaces.
 
-37. Add the real implementation of the timer
+37. Add the real implementation of the timer, and add the timer to GameController. The integration test shows that it is not the expected beahvior because Timer's redraw is blocked by getch();
+
 
 
 
