@@ -53,3 +53,6 @@ void ShapePlacement::join(const ShapePlacement& rhs) {
 	}
 }
 
+int ShapePlacement::eleminate(int width_in_y){
+	return shape->eleminate(width_in_y);
+}

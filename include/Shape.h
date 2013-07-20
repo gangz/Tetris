@@ -9,6 +9,7 @@
 #define SHAPE_H_
 #include <list>
 
+
 class Cell{
 public:
 	Cell(int x, int y):x(x),y(y){};

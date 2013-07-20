@@ -20,6 +20,7 @@ public:
 	void join(const ShapePlacement& rhs);
 	int shapeSize() const;
 	Cell getAt(int pos) const;
+	int eleminate(int width_in_y);
 private:
 	Shape* shape;
 	int x;

@@ -93,6 +93,7 @@ void GameController::terminate(){
 }
 
 bool GameController::checkGameOver() {
+	if (existedBlockPlacement->shapeSize()==0) return false;
 	Cell c =existedBlockPlacement->getAt(existedBlockPlacement->shapeSize()-1);
 	if (c.x == 0) {
 		graphcisController->drawGameOver();
@@ -109,7 +110,7 @@ bool GameController::checkGameOver() {
 }
 
 void GameController::eleminateRows() {
-
+	existedBlockPlacement->eleminate(8);
 }
 
 void GameController::moveDownCollision() {
