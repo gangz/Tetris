@@ -84,7 +84,7 @@ void GameController::listenInputEvents(){
 
 void GameController::createShape(){
 	ShapeFactory shapeFactory;
-	Shape* activeShape = shapeFactory.make(ShapeFactory::TYPE_L);
+	Shape* activeShape = shapeFactory.makeRandom();
 	activeShapePlacement->put(activeShape);
 
 }

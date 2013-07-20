@@ -8,6 +8,10 @@
 #ifndef SHAPEFACTORY_H_
 #define SHAPEFACTORY_H_
 #include "Shape.h"
+#include "stdlib.h"
+#include <time.h>
+
+
 class ShapeFactory {
 public:
 	typedef enum {
@@ -20,10 +24,15 @@ public:
 
 public:
 	ShapeFactory();
+
 	virtual ~ShapeFactory();
 	Shape* make(){
 		Shape *obj = new Shape();
 		return obj;
+	}
+	Shape* makeRandom(){
+		int type = rand() % (TYPE_L-TYPE_BAR+1)+ TYPE_BAR;
+		return make((ShapeType)type);
 	}
 	Shape* make(ShapeType type){
 		Shape* shape = make();

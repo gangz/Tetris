@@ -199,4 +199,4 @@ of the tetris area.
 40. Now we can add more shapes into the game. 
     I also found a bug: move left and right have no check with exist blocks. Add it. 
 
-
+41. The next step is to produce the shape randomly.

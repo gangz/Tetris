@@ -8,9 +8,7 @@
 #include "ShapeFactory.h"
 
 ShapeFactory::ShapeFactory() {
-	// TODO Auto-generated constructor stub
-
-}
+	srand((unsigned)time(NULL));  }
 
 ShapeFactory::~ShapeFactory() {
 	// TODO Auto-generated destructor stub
