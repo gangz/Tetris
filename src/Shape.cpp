@@ -68,9 +68,16 @@ int Shape::eleminate(int width_in_y){
 			std::list<Cell>::iterator iter = std::remove_if(cellList.begin(),cellList.end(),
 					bind2nd(Compare(), Cell(count_iter->first,0)));
 			cellList.erase(iter, cellList.end());
+
+			for(iter=cellList.begin();iter!=cellList.end();iter++){
+				if (iter->x < count_iter->first)
+					iter->x++;
+			}
+
 			removedRowsCount++;
 		}
 	}
+
 	return removedRowsCount;
 }
 
