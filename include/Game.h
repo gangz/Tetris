@@ -33,7 +33,6 @@ private:
 	void restart();
 	bool checkGameOver();
 	void eleminateRows();
-	void fallDownExistShape();
 
 	bool terminateFlag;
 	ScoreKeeper _scoreKeeper;

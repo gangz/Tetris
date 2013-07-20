@@ -185,7 +185,7 @@ of the tetris area.
 34. Integrate it into the game immediately.
    
 
-35. during step 34, found a new error: the last row compress will goto endless loop
+35. during step 34, found a new error: the last row compress will goto endless loop. it is due to there is an empty shape check collision. remove the unused falldown shape. it is OK again.
 
 
 
