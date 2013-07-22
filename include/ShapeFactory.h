@@ -18,6 +18,8 @@ public:
 		TYPE_NULL,
 		TYPE_BAR,
 		TYPE_SQUARE,
+		TYPE_INV_Z,
+		TYPE_INV_L,
 		TYPE_Z,
 		TYPE_L,
 	}ShapeType;
@@ -57,6 +59,17 @@ public:
 			shape->add(Cell(0, 1));
 			shape->add(Cell(0, 2));
 			shape->add(Cell(1, 2));
+		}
+		else if (type == TYPE_INV_Z) {
+			shape->add(Cell(0, 1));
+			shape->add(Cell(0, 2));
+			shape->add(Cell(1, 0));
+			shape->add(Cell(1, 1));
+		} else if (type == TYPE_INV_L) {
+			shape->add(Cell(0, 0));
+			shape->add(Cell(0, 1));
+			shape->add(Cell(0, 2));
+			shape->add(Cell(1, 0));
 		}
 		return shape;
 	}

@@ -199,4 +199,9 @@ of the tetris area.
 40. Now we can add more shapes into the game. 
     I also found a bug: move left and right have no check with exist blocks. Add it. 
 
-41. The next step is to produce the shape randomly.
+41. The next step is to produce the shape randomly. IN the step, I have not use TDD. it is just for quick implementation. There is already clear that how to test random , and also three cases for (a,b], [a,b] and (a,b].
+
+42. Then I found the refresh is too frequent (in driver layer). Move it to graphcis controller layer. (I add it from IGraphcisController -> then MockGraphcisController -> Then GraphcisController ->Then IGraphcisDriver -> Then NcursesGraphcisDriver. every step is drivened by compiler error. Very quick. (no thinking burden)
+    BUT THE RESULT IS BAD. The timer fall down cannot refresh. roll back. (FAILED)
+
+43. It is time to turn the shape. we have 2 alternatives:calculate the shape, or create a mapping of shapes. 
