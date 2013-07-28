@@ -217,3 +217,6 @@ of the tetris area.
 
    By modify the game.cpp, I found that a new interface in shapePlacement.turn()   Add an empty implement, and check it in;
 
+
+46. Use TDD to implement the shapePlacement.turn(). 
+
