@@ -18,7 +18,7 @@ TEST(ShapeFactory, make_a_wall){
 
 TEST(ShapeFactory, make_a_square){
 
-	Shape* shape = shapeFactory.make(ShapeFactory::TYPE_SQUARE);
+	Shape* shape = shapeFactory.make(Shape::TYPE_SQUARE);
 	CHECK_EQUAL(4,shape->size());
 	delete shape;
 }

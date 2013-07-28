@@ -10,6 +10,8 @@
 #include <list>
 
 
+
+
 class Cell{
 public:
 	Cell(int x, int y):x(x),y(y){};
@@ -18,14 +20,29 @@ public:
 };
 class Shape {
 public:
+	typedef enum {
+		TYPE_BAR,
+		TYPE_SQUARE,
+		TYPE_T,
+		TYPE_INV_Z,
+		TYPE_INV_L,
+		TYPE_Z,
+		TYPE_L,
+		TYPE_NULL,
+	}ShapeType;
+
 	Shape();
 	virtual ~Shape();
+	Shape(ShapeType shapeType);
 	int size() const;
 	void add(const Cell& c);
 	Cell getAt(int pos)  const;
 	int eleminate(int width_in_y);
+	void turn();
 private:
 	std::list<Cell> cellList;
+	ShapeType shapeType;
+	int rotationIndex;
 };
 
 #endif /* SHAPE_H_ */

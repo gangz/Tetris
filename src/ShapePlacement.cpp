@@ -58,5 +58,6 @@ int ShapePlacement::eleminate(int width_in_y){
 }
 
 void ShapePlacement::turn(){
+	shape->turn();
 	return;
 }

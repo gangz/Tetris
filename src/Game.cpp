@@ -17,7 +17,7 @@ void GameController::createGame() {
 	timer = new LinuxTimer();
 	timer->registerEventListener(blockMoveDown);
 	ShapeFactory shapeFactory;
-	existedBlockPlacement->put(shapeFactory.make(ShapeFactory::TYPE_NULL));
+	existedBlockPlacement->put(shapeFactory.make(Shape::TYPE_NULL));
 	borderShapePlacement->put(shapeFactory.makeWall(22, 10));
 	terminateFlag = false;
 	timer->start();

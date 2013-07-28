@@ -9,7 +9,7 @@ TEST_GROUP(Shape){
 
 TEST(Shape, can_produce_a_bar){
 	ShapeFactory factory;
-	Shape* shape = factory.make(ShapeFactory::TYPE_BAR);
+	Shape* shape = factory.make(Shape::TYPE_BAR);
 	CHECK_EQUAL(4,shape->size());
 	for(int i=0;i<4;i++){
 		Cell c = shape->getAt(i);
@@ -21,7 +21,7 @@ TEST(Shape, can_produce_a_bar){
 
 TEST(Shape, eleminate_a_whole_row){
 	ShapeFactory factory;
-	Shape* shape = factory.make(ShapeFactory::TYPE_BAR);
+	Shape* shape = factory.make(Shape::TYPE_BAR);
 	int rows = shape->eleminate(4);
 	CHECK_EQUAL(1,rows);
 	CHECK_EQUAL(0,shape->size());

@@ -2,13 +2,66 @@
 #include <assert.h>
 #include <map>
 #include <algorithm>
-Shape::Shape() {
-	// TODO Auto-generated constructor stub
 
+int shape_data[][4][2]={
+		{{0,0},{0,1},{0,2},{0,3}}, //BAR
+		{{0,2},{1,2},{2,2},{3,2}}, //BAR
+		{{0,0},{0,1},{0,2},{0,3}}, //BAR
+		{{0,2},{1,2},{2,2},{3,2}}, //BAR
+		{{0,0},{0,1},{1,0},{1,1}}, //SQUARE
+		{{0,0},{0,1},{1,0},{1,1}}, //SQUARE
+		{{0,0},{0,1},{1,0},{1,1}}, //SQUARE
+		{{0,0},{0,1},{1,0},{1,1}}, //SQUARE
+		{{0,0},{0,1},{1,1},{1,2}}, //Z
+		{{0,0},{0,1},{1,1},{1,2}}, //Z
+		{{0,0},{0,1},{1,1},{1,2}}, //Z
+		{{0,0},{0,1},{1,1},{1,2}}, //Z
+		{{0,0},{0,1},{0,2},{1,2}}, //L
+		{{0,0},{0,1},{0,2},{1,2}}, //L
+		{{0,0},{0,1},{0,2},{1,2}}, //L
+		{{0,0},{0,1},{0,2},{1,2}}, //L
+		{{0,1},{0,2},{1,0},{1,1}}, //INV_Z
+		{{0,1},{0,2},{1,0},{1,1}}, //INV_Z
+		{{0,1},{0,2},{1,0},{1,1}}, //INV_Z
+		{{0,1},{0,2},{1,0},{1,1}}, //INV_Z
+		{{0,0},{0,1},{0,2},{1,0}}, //INV_L
+		{{0,0},{0,1},{0,2},{1,0}}, //INV_L
+		{{0,0},{0,1},{0,2},{1,0}}, //INV_L
+		{{0,0},{0,1},{0,2},{1,0}}, //INV_L
+		{{0,0},{0,1},{0,2},{1,1}}, //T
+		{{0,0},{0,1},{0,2},{1,1}}, //T
+		{{0,0},{0,1},{0,2},{1,1}}, //T
+		{{0,0},{0,1},{0,2},{1,1}}, //T
+
+};
+
+Shape::Shape() {
+	shapeType = TYPE_NULL;
+	rotationIndex = 0;
 }
 
 Shape::~Shape() {
 	// TODO Auto-generated destructor stub
+}
+
+Shape::Shape(ShapeType shapeType){
+	rotationIndex = 0;
+
+	int index = (int)shapeType * 4+rotationIndex;
+	for (int i=0;i<4;i++){
+		add(Cell(shape_data[index][i][0],shape_data[index][i][1]));
+	}
+}
+
+void Shape::turn(){
+	//assert not null
+	rotationIndex = rotationIndex++;
+	rotationIndex %= 4;
+	int index = (int)shapeType * 4+rotationIndex;
+	cellList.clear();
+	for (int i=0;i<4;i++){
+		add(Cell(shape_data[index][i][0],shape_data[index][i][1]));
+	}
 }
 
 int Shape::size() const{

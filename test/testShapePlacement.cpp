@@ -8,7 +8,7 @@ TEST_GROUP(ShapePlacement){
 	ShapePlacement* shapePlacement;
 	void setup(){
 		//setup
-		bar = shapeFactory.make(ShapeFactory::TYPE_BAR);
+		bar = shapeFactory.make(Shape::TYPE_BAR);
 		shapePlacement = new ShapePlacement(0,0);
 		shapePlacement->put(bar);
 	}
@@ -63,7 +63,7 @@ TEST_GROUP(ShapePlacement_Join){
 	ShapePlacement* shapePlacement;
 	void setup(){
 		//setup
-		bar = shapeFactory.make(ShapeFactory::TYPE_BAR);
+		bar = shapeFactory.make(Shape::TYPE_BAR);
 		shapePlacement = new ShapePlacement(0,0);
 		shapePlacement->put(bar);
 	}
@@ -73,7 +73,7 @@ TEST_GROUP(ShapePlacement_Join){
 };
 
 TEST(ShapePlacement_Join,join_two_shape){
-	Shape* anotherBar = shapeFactory.make(ShapeFactory::TYPE_BAR);
+	Shape* anotherBar = shapeFactory.make(Shape::TYPE_BAR);
 	ShapePlacement* anotherShapePlacement = new ShapePlacement(0,4);
 	anotherShapePlacement->put(anotherBar);
 	shapePlacement->join(*anotherShapePlacement);
@@ -95,16 +95,16 @@ TEST_GROUP(ShapePlacement_Rotation){
 };
 
 TEST(ShapePlacement_Rotation,turn_a_bar_from_h_to_v){
-	Shape* bar_h = shapeFactory.make(ShapeFactory::TYPE_BAR);
+	Shape* bar_h = shapeFactory.make(Shape::TYPE_BAR);
 	shapePlacement->put(bar_h);
 	shapePlacement->turn();
 	CHECK_EQUAL(0,shapePlacement->getAt(0).x);
 	CHECK_EQUAL(2,shapePlacement->getAt(0).y);
-	CHECK_EQUAL(1,shapePlacement->getAt(0).x);
-	CHECK_EQUAL(2,shapePlacement->getAt(0).y);
-	CHECK_EQUAL(2,shapePlacement->getAt(0).x);
-	CHECK_EQUAL(2,shapePlacement->getAt(0).y);
-	CHECK_EQUAL(3,shapePlacement->getAt(0).x);
-	CHECK_EQUAL(2,shapePlacement->getAt(0).y);
+	CHECK_EQUAL(1,shapePlacement->getAt(1).x);
+	CHECK_EQUAL(2,shapePlacement->getAt(1).y);
+	CHECK_EQUAL(2,shapePlacement->getAt(2).x);
+	CHECK_EQUAL(2,shapePlacement->getAt(2).y);
+	CHECK_EQUAL(3,shapePlacement->getAt(3).x);
+	CHECK_EQUAL(2,shapePlacement->getAt(3).y);
 }
 
