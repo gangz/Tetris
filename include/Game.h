@@ -18,6 +18,7 @@ public:
 	void keyDown();
 	void keyLeft();
 	void keyRight();
+	void turn();
 private:
 	IGraphcisController* graphcisController;
 	InputListener* inputListener;

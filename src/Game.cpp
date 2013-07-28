@@ -76,6 +76,8 @@ void GameController::listenInputEvents(){
 			keyLeft();break;
 		case InputListener::MOVE_RIGHT:
 			keyRight();break;
+		case InputListener::TURN:
+			turn();break;
 		}
 	}
 	while(instruct!=InputListener::EXIST);
@@ -153,6 +155,11 @@ void GameController::keyRight(){
 			collisionDetector->isCollision(activeShapePlacement,existedBlockPlacement,InputListener::MOVE_RIGHT))
 		return;
 	activeShapePlacement->moveRight();
+	reDraw();
+}
+
+void GameController::turn(){
+	activeShapePlacement->turn();
 	reDraw();
 }
 

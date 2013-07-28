@@ -21,6 +21,7 @@ public:
 	int shapeSize() const;
 	Cell getAt(int pos) const;
 	int eleminate(int width_in_y);
+	void turn();
 private:
 	Shape* shape;
 	int x;

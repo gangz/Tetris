@@ -25,6 +25,9 @@ InputListener::Instruction KeyboardInputListener::getInput(){
 	case 's':
 	case KEY_DOWN:
 		return InputListener::MOVE_DOWN;
+	case 'w':
+	case KEY_UP:
+		return InputListener::TURN;
 	case 'n':
 	case 'N':
 		return InputListener::NO;
@@ -33,6 +36,6 @@ InputListener::Instruction KeyboardInputListener::getInput(){
 		return InputListener::YES;
 
 	}
-	sleep(100);
+	//sleep(100);   WHY THIS? remove it.
 	return InputListener::IGNORE;
 }

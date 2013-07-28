@@ -209,5 +209,11 @@ of the tetris area.
 44. Found a bug, without shape T, add it directly, without test. Because I only add a type, but without implement the shape, it triggered a bug immediately. i.e. I given a shape type but have an empty shape created. The game seems hang. How to found it? DBC? anything else? 
     I fixed it in the same commit, but it is a question to be further think.
 
+45. As a player, I now very eagerly to see the rotation of shape. The quickest way is to hardcoded a shape firstly.  There are two question need to be solved:
+  a. How the interface of rotation should be? will shape change it's cell's position, or ShapePlacement change to a new Shape? 
+  b. How the rotation algorithm should be? will it be hardcoded, or by calcuation?
 
+  I feel that the question of a will impact the strategy in b. so I decided to goto question a, and use a strategy of ShapePlacement change to a new shape. There is a quick answer to test the interface, use a different shape to for rotation.  fake and try it. 
+
+   By modify the game.cpp, I found that a new interface in shapePlacement.turn()   Add an empty implement, and check it in;
 

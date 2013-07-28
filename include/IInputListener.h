@@ -9,6 +9,7 @@ public:
 		MOVE_LEFT,
 		MOVE_RIGHT,
 		MOVE_DOWN,
+		TURN,
 		NO,
 		YES,
 	}Instruction;
