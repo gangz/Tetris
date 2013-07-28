@@ -18,6 +18,7 @@ public:
 		TYPE_NULL,
 		TYPE_BAR,
 		TYPE_SQUARE,
+		TYPE_T,
 		TYPE_INV_Z,
 		TYPE_INV_L,
 		TYPE_Z,
@@ -70,6 +71,11 @@ public:
 			shape->add(Cell(0, 1));
 			shape->add(Cell(0, 2));
 			shape->add(Cell(1, 0));
+		} else if (type == TYPE_T) {
+			shape->add(Cell(0, 0));
+			shape->add(Cell(0, 1));
+			shape->add(Cell(0, 2));
+			shape->add(Cell(1, 1));
 		}
 		return shape;
 	}

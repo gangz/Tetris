@@ -205,3 +205,9 @@ of the tetris area.
     BUT THE RESULT IS BAD. The timer fall down cannot refresh. roll back. (FAILED)
 
 43. It is time to turn the shape. we have 2 alternatives:calculate the shape, or create a mapping of shapes. 
+
+44. Found a bug, without shape T, add it directly, without test. Because I only add a type, but without implement the shape, it triggered a bug immediately. i.e. I given a shape type but have an empty shape created. The game seems hang. How to found it? DBC? anything else? 
+    I fixed it in the same commit, but it is a question to be further think.
+
+
+
