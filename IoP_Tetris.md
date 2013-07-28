@@ -221,7 +221,7 @@ of the tetris area.
 46. Use TDD to implement the shapePlacement.turn(). 
     Now see a failed case in ShapePlacement.
 
-47. Refactory shape factory add add the turn feature
+47. Refactory shape factory add add the turn feature for all shapes
 
 
 
