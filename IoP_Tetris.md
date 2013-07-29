@@ -224,4 +224,6 @@ of the tetris area.
 47. Refactory shape factory add add the turn feature for all shapes
 
 
+48. I found that I merely add test to testGame. In the latter phase, many test are down by GUI. It is INEFFICIENT! The GUI is not for test such logic. It is just to help understand the system (from user perspective), and to explore the design risk related with GUI. **** NOTE THIS WILL HELP TO improve the design process a lot! the efficiency will also be far easy **** *The skipped random stub have to come again, and it is better to add a 'DIRECTLY_DOWN' event to accelerate the test**.
 
+49. Add 'nextShape'. Firstly I consider to add a  shape in Game. After add it and without drawing,  Immediately, I found that use ShapePlacement is better to put the position of nextShape area.  

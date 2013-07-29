@@ -90,6 +90,11 @@ void GraphcisController::cleanTetrisArea(){
 	for(int c = TETRIS_POS_V+1;c<TETRIS_POS_V+1+TETRIS_HEIGHT;c++)
 		for (int r = TETRIS_POS_H+1; r<TETRIS_POS_H+1+TETRIS_WIDTH; r++)
 			driver->writeText(Point(c,r),"  ");
+
+	for(int c = NEXT_BLOCK_AREA_V+1;c<NEXT_BLOCK_AREA_V+1+NEXT_BLOCK_HEIGHT;c++)
+		for (int r = NEXT_BLOCK_AREA_H+1; r<NEXT_BLOCK_AREA_H+1+NEXT_BLOCK_WIDTH; r++)
+			driver->writeText(Point(c,r),"  ");
+
 }
 
 void GraphcisController::drawGameOver(){

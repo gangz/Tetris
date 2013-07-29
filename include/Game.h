@@ -5,6 +5,7 @@ class BlockMoveDown;
 class IGraphcisController;
 class InputListener;
 class ShapePlacement;
+class Shape;
 class ICollisionDetector;
 class ITimer;
 class GameController {
@@ -23,11 +24,14 @@ private:
 	IGraphcisController* graphcisController;
 	InputListener* inputListener;
 	ShapePlacement* activeShapePlacement;
+
 	ICollisionDetector* collisionDetector;
 	ShapePlacement* borderShapePlacement;
 	ShapePlacement* existedBlockPlacement;
 	BlockMoveDown* blockMoveDown;
 	ITimer* timer;
+	Shape* nextShape;
+	ShapePlacement* nextShapePlacement;
 	void reDraw();
 	void listenInputEvents();
 	void createShape();
