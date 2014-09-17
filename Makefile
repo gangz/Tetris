@@ -1,48 +1,50 @@
-CPPUTEST_HOME := /home/topcoder/excerise/tool/cpputest
+#PHONY goal
+.PHONY: all clean check_obj_dir
+
+#PATH
+TOPDIR =  $(shell pwd)
+CPPUTEST_HOME := $(TOPDIR)/../tool/cpputest
+
+#FLAGS
 CPPFLAGS += -I$(CPPUTEST_HOME)/include
 CPPFLAGS += -Iinclude
 LD_LIBRARIES = -L $(CPPUTEST_HOME)/lib -lCppUTest -lCppUTestExt -lncurses -lpthread
+CPPFLAGS += -MMD -MP
 
 SOURCE:= $(wildcard src/*.cpp)
-SOURCE_OBJ:= $(SOURCE:src/%.cpp=obj/%.o)
+SOURCE_OBJ:= $(SOURCE:src/%.cpp=obj/src/%.o)
 
 TESTS:= $(wildcard test/*.cpp)
-TESTS_OBJ:= $(TESTS:test/%.cpp=obj/%.o)
+TESTS_OBJ:= $(TESTS:test/%.cpp=obj/test/%.o)
 
 INTEGRATION_TESTS:= $(wildcard it/*.cpp)
-INTEGRATION_TESTS_OBJ:= $(INTEGRATION_TESTS:it/%.cpp=obj/%.o)
+INTEGRATION_TESTS_OBJ:= $(INTEGRATION_TESTS:it/%.cpp=obj/it/%.o)
 
-UT_OBJ:= $(SOURCE_OBJ) $(TESTS_OBJ)
-
-IT_OBJ:= $(SOURCE_OBJ) $(INTEGRATION_TESTS_OBJ) $(TESTS_OBJ)
+OBJS:= $(SOURCE_OBJ) $(INTEGRATION_TESTS_OBJ) $(TESTS_OBJ)
 
 UT_TARGET:= obj/ut.exe
 
 IT_TARGET:=obj/it.exe
 
-all: $(UT_TARGET)
+all: check_obj_dir $(UT_TARGET)
 	$(UT_TARGET)
 
 clean:
-	rm $(UT_OBJ) $(UT_TARGET) $(IT_OBJ)  $(IT_TARGET)
+	rm -rf obj
 
-it: $(IT_TARGET)
+it: check_obj_dir $(IT_TARGET)
 	$(IT_TARGET)
 
-$(UT_TARGET): obj $(UT_OBJ)
-	$(CXX) $(UT_OBJ) $(LD_LIBRARIES) -o $(UT_TARGET)
+$(UT_TARGET): $(SOURCE_OBJ) $(TESTS_OBJ)
+	$(CXX) $(SOURCE_OBJ) $(TESTS_OBJ) $(LD_LIBRARIES) -o $@
 
-$(IT_TARGET): obj $(IT_OBJ)
-	$(CXX) $(IT_OBJ) $(LD_LIBRARIES) -o $(IT_TARGET)
+$(IT_TARGET): $(OBJS)
+	$(CXX) $(OBJS) $(LD_LIBRARIES) -o $(IT_TARGET)
 
-$(SOURCE_OBJ):obj/%.o:src/%.cpp
+$(OBJS):obj/%.o:%.cpp
 	$(CXX) $(CPPFLAGS) -c $< -o $@
+-include $(OBJS:.o=.d)
+	
 
-$(TESTS_OBJ):obj/%.o:test/%.cpp
-	$(CXX) $(CPPFLAGS) -c $< -o $@
-
-$(INTEGRATION_TESTS_OBJ):obj/%.o:it/%.cpp
-	$(CXX) $(CPPFLAGS) -c $< -o $@
-
-obj:
-	mkdir obj
+check_obj_dir:
+	-@mkdir -p obj obj/src obj/test obj/it 2>/dev/null
