@@ -10,6 +10,10 @@ CPPFLAGS += -I$(CPPUTEST_HOME)/include
 CPPFLAGS += -Iinclude
 LD_LIBRARIES = -L $(CPPUTEST_HOME)/lib -lCppUTest -lCppUTestExt -lncurses -lpthread
 CPPFLAGS += -MMD -MP
+ifdef GCOV
+    CPPFLAGS +=  -fprofile-arcs -ftest-coverage 
+    LD_LIBRARIES += -lgcov
+endif
 
 SOURCE:= $(wildcard src/*.cpp)
 SOURCE_OBJ:= $(SOURCE:src/%.cpp=obj/src/%.o)
