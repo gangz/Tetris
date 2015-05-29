@@ -31,7 +31,11 @@ UT_TARGET:= obj/ut.exe
 IT_TARGET:=obj/it.exe
 
 all: check_obj_dir $(UT_TARGET)
+ifdef GCOV
+	./cov.sh $UT_TARGET
+else
 	$(UT_TARGET)
+endif
 
 clean:
 	rm -rf obj
