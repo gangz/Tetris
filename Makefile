@@ -32,13 +32,15 @@ IT_TARGET:=obj/it.exe
 
 all: check_obj_dir $(UT_TARGET)
 ifdef GCOV
-	./cov.sh $UT_TARGET
+	./cov.sh $(UT_TARGET)
 else
 	$(UT_TARGET)
 endif
 
 clean:
 	rm -rf obj
+	rm *.info
+	rm -rf gcov-html
 
 it: check_obj_dir $(IT_TARGET)
 	$(IT_TARGET)
