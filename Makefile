@@ -3,7 +3,7 @@
 
 #PATH
 TOPDIR =  $(shell pwd)
-CPPUTEST_HOME := $(TOPDIR)/../tool/cpputest
+CPPUTEST_HOME := $(TOPDIR)/cpputest
 
 #FLAGS
 CPPFLAGS += -I$(CPPUTEST_HOME)/include

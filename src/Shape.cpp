@@ -54,14 +54,10 @@ Shape::Shape(ShapeType shapeType){
 }
 
 void Shape::turn(){
-//	assert(shapeType>=TYPE_BAR && shapeType<=TYPE_T);
-
-	rotationIndex = rotationIndex++;
+	rotationIndex++;
 	rotationIndex %= 4;
 
 	int index = (int)shapeType * 4+rotationIndex;
-
-//	assert(index>=0 && index<=28);
 	cellList.clear();
 	for (int i=0;i<4;i++){
 		add(Cell(shape_data[index][i][0],shape_data[index][i][1]));
